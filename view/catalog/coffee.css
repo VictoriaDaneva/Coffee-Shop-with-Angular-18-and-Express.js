@@ -77,114 +77,43 @@ nav .menu {
     padding: 10px 0;
   }
 }
-
-/*hero section*/
-.hero-section {
-  background: url("https://www.refinery29.com/images/10045552.jpg?crop=40%3A21")
-    no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 50px;
-  color: #fff;
+/*catalog*/
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+  background: #f9f9f9;
 }
 
-.hero-content {
-  max-width: 400px;
-  text-align: right;
-}
-
-.hero-heading {
-  font-size: 3rem;
-  font-weight: bold;
+.catalog header {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.hero-subtext {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.hero-button {
-  background-color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.hero-button a {
-  color: #333;
-  font-size: 1rem;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.hero-button:hover {
-  background-color: #f3f3f3;
-}
-
-/*Perks bar*/
-
-.perks-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #183371;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.perk {
-  display: flex;
-  align-items: center;
-}
-
-.perk-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 8px;
-}
-
-.perk-text {
-  font-weight: bold;
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-/*card products*/
-
-.products-section {
-  padding: 50px 20px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.products-heading {
+.catalog h1 {
   font-size: 2rem;
-  margin-bottom: 30px;
-  font-weight: bold;
   color: #183371;
 }
 
-.product-cards {
+.catalog p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.product-grid {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .product-card {
   background: #fff;
-  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 250px;
-  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 15px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card:hover {
@@ -192,27 +121,37 @@ nav .menu {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.product-image {
+.product-card img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 15px;
 }
 
-.product-title {
+.product-details {
+  margin-top: 10px;
+}
+
+.product-name {
   font-size: 1.2rem;
   font-weight: bold;
   color: #183371;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .product-price {
-  font-size: 1rem;
-  color: #305bc0;
-  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #3a85b4;
 }
 
-.wishlist-button {
+.product-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 10px 0;
+  margin-bottom: 35px;
+}
+
+.details-button {
   background-color: #183371;
   color: #fff;
   border: none;
@@ -222,38 +161,8 @@ nav .menu {
   transition: background-color 0.3s;
 }
 
-.wishlist-button:hover {
-  background-color: #335ab6;
-}
-/*about us info*/
-.about-shop {
-  color: white;
-  padding: 20px 20px;
-  text-align: left;
-}
-
-.about-shop h3 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  text-align: left;
-  font-weight: italic;
-  margin-bottom: 20px;
-  padding-left: 60px;
-}
-.about-shop p {
-  margin: 0;
-  padding-left: 60px;
-  padding-right: 20px;
-}
-.about-shop a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.about-shop a:hover {
-  color: var(--color-primary);
+.details-button:hover {
+  background: #335ab6;
 }
 
 /*footer*/
