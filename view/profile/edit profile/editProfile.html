@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="./editProfile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!--Navigation Bar-->
+    <nav>
+      <div class="logo">The Coffee-Shop</div>
+      <div class="menu">
+        <a class="item" href="/home">Home</a>
+        <a class="item" href="/coffee">Coffee</a>
+        <a class="item" href="/about-us">About Us</a>
+        <a class="item" href="/create">Create</a>
+        <a class="item" href="/register">Register</a>
+        <a class="item" href="/login">Login</a>
+        <a class="item" href="/logout">Logout</a>
+      </div>
+    </nav>
+
+    <!-- Edit Profile Form -->
+    <div class="edit-profile-container">
+      <div class="edit-profile-card">
+        <h2>Edit Profile</h2>
+        <form action="/update-profile" method="post">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value="User Name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value="mail@expaytech.co"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value="+20 01274318900"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" required>
+285 N Broad St, Elizabeth, NJ, 07208, USA</textarea
+            >
+          </div>
+          <div class="button-group">
+            <button type="submit" class="save-btn">Save Changes</button>
+            <button
+              type="button"
+              class="cancel-btn"
+              onclick="window.location.href='profile.html'"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

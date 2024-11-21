@@ -1,0 +1,268 @@
+:root {
+  --color-primary: #3a85b4;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #9baedb;
+  color: #183371;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*Navigation bar*/
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #183371;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+nav .logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+nav .menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav .item {
+  font-size: 0.9rem;
+  color: white;
+  text-decoration: none;
+  padding: 0 10px;
+  line-height: 60px;
+  cursor: pointer;
+  position: relative;
+}
+
+nav .item:hover {
+  color: var(--color-primary);
+}
+
+nav .menu {
+  padding-right: 20px;
+  overflow: hidden;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  nav .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav .item {
+    line-height: normal;
+    padding: 10px 0;
+  }
+}
+/*edit page*/
+.edit-profile-container {
+  margin: 100px auto;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-card {
+  text-align: center;
+}
+
+.edit-profile-card h2 {
+  margin-bottom: 20px;
+  color: #183371;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3a85b4;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Button Styling */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.save-btn {
+  padding: 10px 20px;
+  background-color: #183371;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #1f408d;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  background-color: #711818;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #a32424;
+}
+
+/*footer*/
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #183371;
+  color: white;
+  padding: 30px 20px;
+  margin-top: 40px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.footer-image {
+  padding: 0 70px;
+  width: 170px; /* Adjust size as needed */
+  height: 260px;
+}
+
+.footer-right {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  padding: 0 60px;
+}
+
+.footer-column h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #f3f3f3;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.footer-column a:hover {
+  color: var(--color-primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-column {
+    align-items: center;
+  }
+
+  .footer-column h3 {
+    font-size: 1.2rem;
+  }
+
+  .footer-column a {
+    font-size: 1rem;
+  }
+}
