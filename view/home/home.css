@@ -226,36 +226,80 @@ nav .menu {
   background-color: #335ab6;
 }
 /*about us info*/
-.about-shop {
-  color: white;
-  padding: 20px 20px;
+.about-section {
+  background-color: #063a69; /* Deep blue */
+  color: #fff; /* White text */
+  padding: 60px 20px;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent the text and image from stacking */
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px; /* Add spacing between the text and image */
+}
+
+.about-text {
+  flex: 1; /* Allow the text to take up half the space */
+  padding: 20px;
   text-align: left;
 }
 
-.about-shop h3 {
-  font-size: 1.2rem;
-  color: #ffffff;
-  text-align: left;
-  font-weight: italic;
-  margin-bottom: 20px;
-  padding-left: 60px;
-}
-.about-shop p {
-  margin: 0;
-  padding-left: 60px;
-  padding-right: 20px;
-}
-.about-shop a {
-  color: #fff;
-  text-decoration: none;
+.about-text h1 {
+  font-size: 2.5rem;
   font-weight: bold;
+  margin: 10px 0;
+}
+
+.about-text h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   margin-bottom: 20px;
 }
 
-.about-shop a:hover {
-  color: var(--color-primary);
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
+.about-button {
+  display: inline-block;
+  background-color: #fff;
+  color: #063a69;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.about-button a {
+  text-decoration: none;
+  color: #063a69;
+  font-weight: bold;
+}
+
+.about-button:hover {
+  background-color: #f3f3f3;
+}
+
+.about-image {
+  flex: 1; /* Allow the image to take up half the space */
+  padding: 20px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 90%; /* Ensure the image doesn't overflow its container */
+  height: auto;
+  border-radius: 15px;
+}
 /*footer*/
 footer {
   display: flex;
