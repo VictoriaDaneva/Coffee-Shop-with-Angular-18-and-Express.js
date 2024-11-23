@@ -1,0 +1,222 @@
+/*hero section*/
+.hero-section {
+  background: url("https://www.refinery29.com/images/10045552.jpg?crop=40%3A21")
+    no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 50px;
+  color: #fff;
+}
+
+.hero-content {
+  max-width: 400px;
+  text-align: right;
+}
+
+.hero-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero-subtext {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero-button {
+  background-color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.hero-button a {
+  color: #333;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero-button:hover {
+  background-color: #f3f3f3;
+}
+
+/*Perks bar*/
+
+.perks-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #183371;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.perk {
+  display: flex;
+  align-items: center;
+}
+
+.perk-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.perk-text {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+/*card products*/
+
+.products-section {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.products-heading {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #183371;
+}
+
+.product-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #183371;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: #305bc0;
+  margin-bottom: 15px;
+}
+
+.wishlist-button {
+  background-color: #183371;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wishlist-button:hover {
+  background-color: #335ab6;
+}
+/*about us info*/
+.about-section {
+  background-color: #063a69; /* Deep blue */
+  color: #fff; /* White text */
+  padding: 60px 20px;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent the text and image from stacking */
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px; /* Add spacing between the text and image */
+}
+
+.about-text {
+  flex: 1; /* Allow the text to take up half the space */
+  padding: 20px;
+  text-align: left;
+}
+
+.about-text h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.about-text h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-button {
+  display: inline-block;
+  background-color: #fff;
+  color: #063a69;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.about-button a {
+  text-decoration: none;
+  color: #063a69;
+  font-weight: bold;
+}
+
+.about-button:hover {
+  background-color: #f3f3f3;
+}
+
+.about-image {
+  flex: 1; /* Allow the image to take up half the space */
+  padding: 20px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 90%; /* Ensure the image doesn't overflow its container */
+  height: auto;
+  border-radius: 15px;
+}

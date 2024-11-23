@@ -1,0 +1,52 @@
+<div class="card">
+  <h2>Create Product</h2>
+  <form action="/update-product" method="post" class="form">
+    <input
+      type="url"
+      id="image-url"
+      name="imageUrl"
+      placeholder="Image URL"
+      required
+    />
+    <input
+      type="text"
+      id="title"
+      name="title"
+      placeholder="Product Title"
+      required
+    />
+    <input
+      type="number"
+      id="price"
+      name="price"
+      placeholder="Price"
+      step="0.01"
+      required
+    />
+    <input
+      type="text"
+      id="type"
+      name="type"
+      placeholder="Product Type"
+      required
+    />
+    <input type="text" id="type" name="author" placeholder="Author" required />
+    <textarea
+      id="description"
+      name="description"
+      placeholder="Description"
+      rows="3"
+      required
+    ></textarea>
+    <div class="button-group">
+      <button type="submit">Create</button>
+      <button
+        type="button"
+        class="cancel-btn"
+        onclick="window.location.href='/products'"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

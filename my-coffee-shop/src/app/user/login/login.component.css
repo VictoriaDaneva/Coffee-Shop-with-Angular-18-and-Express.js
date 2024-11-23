@@ -1,0 +1,89 @@
+.card {
+  position: relative;
+  z-index: 3;
+  width: 94%;
+  max-width: 400px;
+  margin: 120px auto;
+  padding: 40px 30px;
+  border-radius: 12px;
+  background: var(--color-white);
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.card p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.form {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form input,
+.form button {
+  width: 90%;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 14px;
+  border: none;
+}
+
+.form input {
+  padding: 0 20px;
+  background: #ededed;
+}
+
+.form input::placeholder {
+  color: #888;
+}
+
+.form button {
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center horizontally */
+  height: 50px;
+  border-radius: 25px;
+  font-size: 14px;
+  border: none;
+  background: #183371;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  display: block; /* Ensures margin auto works for centering */
+}
+
+.form button:hover {
+  background: var(--color-primary);
+}
+
+footer {
+  font-size: 14px;
+  color: #777;
+}
+
+footer a {
+  color: #183371;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
