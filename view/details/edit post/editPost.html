@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Profile</title>
-    <link rel="stylesheet" href="./editProfile.css" />
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="./editPost.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap"
       rel="stylesheet"
@@ -28,51 +28,56 @@
     <!-- Background -->
     <div class="background"></div>
 
-    <!-- Edit Profile Card -->
+    <!-- Edit Product Card -->
     <div class="card">
-      <h2>Edit Profile</h2>
-      <form action="/update-profile" method="post" class="form">
+      <h2>Edit Product</h2>
+      <form action="/update-product" method="post" class="form">
+        <input
+          type="url"
+          id="image-url"
+          name="imageUrl"
+          placeholder="Image URL"
+          required
+        />
         <input
           type="text"
-          id="name"
-          name="name"
-          placeholder="Name"
-          value="User Name"
+          id="title"
+          name="title"
+          placeholder="Product Title"
           required
         />
         <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          value="mail@expaytech.co"
+          type="number"
+          id="price"
+          name="price"
+          placeholder="Price"
+          step="0.01"
           required
         />
         <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="Phone Number"
-          value="+20 01274318900"
+          type="text"
+          id="type"
+          name="type"
+          placeholder="Product Type"
           required
         />
         <textarea
-          id="address"
-          name="address"
-          placeholder="Address"
+          id="description"
+          name="description"
+          placeholder="Description"
           rows="3"
           required
-        >
-285 N Broad St, Elizabeth, NJ, 07208, USA</textarea
-        >
-        <button type="submit">Save Changes</button>
-        <button
-          type="button"
-          class="cancel-btn"
-          onclick="window.location.href='/products'"
-        >
-          Cancel
-        </button>
+        ></textarea>
+        <div class="button-group">
+          <button type="submit">Save Changes</button>
+          <button
+            type="button"
+            class="cancel-btn"
+            onclick="window.location.href='/products'"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   </body>
