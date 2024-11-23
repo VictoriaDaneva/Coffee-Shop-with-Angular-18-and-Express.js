@@ -155,10 +155,17 @@ nav .menu {
 }
 
 .form button {
-  background: var(--color-secondary);
-  color: var(--color-white);
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center horizontally */
+  height: 50px;
+  border-radius: 25px;
+  font-size: 14px;
+  border: none;
+  background: #183371;
+  color: white;
   font-weight: 500;
   cursor: pointer;
+  display: block; /* Ensures margin auto works for centering */
 }
 
 .form button:hover {
@@ -171,7 +178,7 @@ footer {
 }
 
 footer a {
-  color: var(--color-secondary);
+  color: #183371;
   text-decoration: none;
 }
 
