@@ -78,73 +78,90 @@ nav .menu {
   }
 }
 /*profile*/
-.profile-container {
+/* Background Styling */
+.background {
+  position: fixed;
+  top: -50vmin;
+  left: -50vmin;
+  width: 100vmin;
+  height: 100vmin;
+  border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+  background: #65c8ff;
+  z-index: -1;
+}
+
+.background::after {
+  content: "";
+  position: fixed;
+  right: -50vmin;
+  bottom: -55vmin;
+  width: 100vmin;
+  height: 100vmin;
+  border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+  background: #143d81;
+}
+
+/* Profile Section */
+.profile-card {
+  background: white;
   margin: 100px auto;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  max-width: 900px;
-  padding: 20px;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center; /* Centers content vertically */
-  justify-content: center; /* Centers content horizontally */
-  gap: 20px;
-  text-align: center; /* Ensures text is centered */
+  overflow: hidden;
 }
 
 .profile-left {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-.profile-image {
-  position: relative;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  overflow: hidden;
+  padding: 20px;
 }
 
 .profile-image img {
-  width: 300px;
-  height: 300px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
 .profile-right {
-  flex: 1;
+  flex: 2;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the profile details horizontally */
-  gap: 15px;
+  gap: 10px;
 }
 
 .profile-right h2 {
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 22px;
+  color: #183371;
 }
 
 .profile-right p {
-  padding-top: 10px;
-  margin: 0;
+  margin: 5px 0;
   font-size: 16px;
   color: #555;
 }
 
 .edit-profile-btn {
-  padding: 10px 20px;
-  background-color: #183371;
-  color: #fff;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 25px;
+  height: 40px;
+  border-radius: 25px;
+  font-size: 14px;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  background: #183371;
+  color: white;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .edit-profile-btn:hover {
-  background-color: #204393;
+  background: var(--color-primary);
 }
 
 /*wishlist*/
