@@ -11,21 +11,21 @@ const app = express();
 //setup db
 const url = "mongodb://localhost:27017";
 mongoose
-  .connect(url, { dbName: "Volcanos" })
+  .connect(url, { dbName: "Coffee" })
   .then(console.log(`DB Connected!`))
   .catch((err) => console.log(`DB Failed! ${err}`)); //setup the name based on the project
 
 //setup handlebars
-app.engine(
-  "hbs",
-  handlebars.engine({
-    extname: "hbs",
-  })
-);
-app.set("views", "src/views");
-app.set("view engine", "hbs");
+//app.engine(
+//  "hbs",
+//  handlebars.engine({
+//    extname: "hbs",
+//  })
+//);
+//app.set("views", "src/views");
+//app.set("view engine", "hbs");//
 
-app.use("/static", express.static("src/public")); //remove the dots
+//app.use("/static", express.static("src/public")); //remove the dots
 app.use(express.urlencoded({ extended: false })); // to not have complex data (false)
 app.use(cookieParser());
 app.use(authMiddleware);
