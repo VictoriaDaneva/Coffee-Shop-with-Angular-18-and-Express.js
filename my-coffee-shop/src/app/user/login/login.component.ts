@@ -1,11 +1,33 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth-service.service';
 import { RouterLink } from '@angular/router';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {}
+export class LoginComponent {
+  errorMessage: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  onSubmit(form: NgForm): void {
+    if (form.invalid) {
+      this.errorMessage = 'Please fill in all required fields.';
+      return;
+    }
+
+    const { email, password } = form.value;
+
+    this.authService.login({ email, password }).subscribe({
+      next: () => this.router.navigate(['/home']),
+      error: (err) =>
+        (this.errorMessage = err.message || 'Login failed. Please try again.'),
+    });
+  }
+}

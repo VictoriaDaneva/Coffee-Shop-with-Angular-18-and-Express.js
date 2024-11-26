@@ -1,9 +1,30 @@
 <div class="card">
   <h2>Login</h2>
-  <form action="" class="form">
-    <input type="email" placeholder="email" value="" #inputEmail required />
-    <input type="password" placeholder="password" #inputPassword required />
-    <button>Sign in</button>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="form">
+    <input type="email" placeholder="Email" name="email" ngModel required />
+    @if (loginForm.controls['email']?.invalid &&
+    loginForm.controls['email']?.touched) {
+    <div class="error">Email is required</div>
+    }
+
+    <input
+      type="password"
+      placeholder="Password"
+      name="password"
+      ngModel
+      required
+    />
+    @if (loginForm.controls['password']?.invalid &&
+    loginForm.controls['password']?.touched) {
+    <div class="error">Password is required</div>
+    }
+
+    <button type="submit" [disabled]="loginForm.invalid">Sign in</button>
   </form>
+
+  @if (errorMessage) {
+  <p class="error">{{ errorMessage }}</p>
+  }
+
   <footer>Need an account? Sign up <a routerLink="/register">here</a></footer>
 </div>

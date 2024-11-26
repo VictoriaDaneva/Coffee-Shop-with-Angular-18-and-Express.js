@@ -6,54 +6,54 @@ import { isGuest } from "../middleware/authMiddleware.js";
 
 const authController = Router();
 
-authController.get("/register", isGuest, (req, res) => {
-  res.render("auth/register", { tittle: "Register Page" });
-});
-
+// Register
 authController.post("/register", isGuest, async (req, res) => {
-  const { email, username, password, rePassword } = req.body;
+  const { username, email, phoneNumber, address, password, rePassword } =
+    req.body;
+
+  console.log({ username, email, phoneNumber, address, password, rePassword });
 
   try {
     const token = await authService.register(
       username,
       email,
+      phoneNumber,
+      address,
       password,
       rePassword
     );
-    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
-    res.redirect("/");
+    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true, secure: true });
+    res.json({ token });
+    console.log("EVERYTHING IS OKAY");
   } catch (err) {
-    const error = getErrrorMessage(err);
-    res.render("auth/register", {
-      tittle: "Register Page",
+    console.log(getErrrorMessage(err));
+
+    res.status(400).json({
       username,
       email,
-      error,
+      phoneNumber,
+      address,
+      error: getErrrorMessage(err),
     });
   }
 });
 
-authController.get("/login", isGuest, (req, res) => {
-  res.render("auth/login", { tittle: "Login Page" });
-});
-
+// Login
 authController.post("/login", isGuest, async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const token = await authService.login(email, password);
-    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
-
-    res.redirect("/");
+    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true, secure: true });
+    res.status(200).json({ message: "Login successful", token });
   } catch (err) {
-    const error = getErrrorMessage(err);
-    res.render("auth/login", { tittle: "Login Page", email, error });
+    res.status(400).json({ error: getErrrorMessage(err) });
   }
 });
 
+// Logout
 authController.get("/logout", (req, res) => {
   res.clearCookie(AUTH_COOKIE_NAME);
-  res.redirect("/");
 });
 
 export default authController;

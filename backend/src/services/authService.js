@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "../lib/jwt.js";
 
 const authService = {
-  async register(username, email, password, rePassword) {
+  async register(username, email, phoneNumber, address, password, rePassword) {
     const User = await user.findOne({ $or: [{ email }, { username }] });
 
     if (rePassword !== password) {
@@ -12,7 +12,13 @@ const authService = {
     if (User) {
       throw new Error("User already exists!!!");
     }
-    const newUser = await user.create({ username, email, password });
+    const newUser = await user.create({
+      username,
+      email,
+      phoneNumber,
+      address,
+      password,
+    });
     return this.generateToken(newUser);
   },
 
