@@ -16,7 +16,7 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit(form: NgForm): void {
+  onSubmit(form: NgForm) {
     if (form.invalid) {
       this.errorMessage = 'Please fill in all required fields.';
       return;
@@ -24,10 +24,8 @@ export class LoginComponent {
 
     const { email, password } = form.value;
 
-    this.authService.login(email, password).subscribe({
-      next: () => this.router.navigate(['/home']),
-      error: (err) =>
-        (this.errorMessage = err.message || 'Login failed. Please try again.'),
+    this.authService.login(email, password).subscribe(() => {
+      this.router.navigate(['/home']);
     });
   }
 }

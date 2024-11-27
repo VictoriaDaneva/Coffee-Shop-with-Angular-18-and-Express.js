@@ -22,7 +22,11 @@ authController.post("/register", isGuest, async (req, res) => {
       password,
       rePassword
     );
-    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true, secure: true });
+    res.cookie(AUTH_COOKIE_NAME, token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
     res.json({ token });
     console.log("EVERYTHING IS OKAY");
   } catch (err) {
@@ -44,8 +48,15 @@ authController.post("/login", isGuest, async (req, res) => {
 
   try {
     const token = await authService.login(email, password);
-    res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true, secure: true });
-    res.status(200).json({ message: "Login successful", token });
+
+    res.cookie(AUTH_COOKIE_NAME, token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    });
+
+    // Respond with the token and user details
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ error: getErrrorMessage(err) });
   }

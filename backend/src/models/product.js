@@ -31,7 +31,7 @@ const productSchema = new Schema({
       ref: "Likes",
     },
   ],
-  userId: {
+  owner: {
     type: Types.ObjectId,
     ref: "User",
   },

@@ -1,35 +1,35 @@
 <div class="card">
   <h2>Create Product</h2>
-  <form
-    #createForm="ngForm"
-    (ngSubmit)="onSubmit(createForm)"
-    method="post"
-    class="form"
-  >
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" method="post" class="form">
+    <!-- Image URL -->
     <input
       type="url"
       id="image-url"
       name="imageUrl"
       placeholder="Image URL"
       ngModel
+      #imageUrlInput="ngModel"
       required
     />
-    @if ( createForm.controls['imageUrl'].invalid &&
-    createForm.controls['imageUrl'].touched ) {
+    @if (imageUrlInput.invalid && imageUrlInput.touched) {
     <div class="error">An image is required.</div>
     }
+
+    <!-- Title -->
     <input
       type="text"
       id="title"
       name="title"
       placeholder="Product Title"
       ngModel
+      #titleInput="ngModel"
       required
     />
-    @if ( createForm.controls['title'].invalid &&
-    createForm.controls['title'].touched ) {
+    @if (titleInput.invalid && titleInput.touched) {
     <div class="error">A title is required.</div>
     }
+
+    <!-- Price -->
     <input
       type="string"
       id="price"
@@ -37,50 +37,58 @@
       placeholder="Price"
       step="0.01"
       ngModel
+      #priceInput="ngModel"
       required
     />
-    @if ( createForm.controls['price'].invalid &&
-    createForm.controls['price'].touched ) {
+    @if (priceInput.invalid && priceInput.touched) {
     <div class="error">A price is required.</div>
     }
+
+    <!-- Product Type -->
     <input
       type="text"
       id="type"
       name="type"
       placeholder="Product Type"
       ngModel
+      #typeInput="ngModel"
       required
     />
-    @if ( createForm.controls['type'].invalid &&
-    createForm.controls['type'].touched ) {
+    @if (typeInput.invalid && typeInput.touched) {
     <div class="error">A type is required.</div>
     }
+
+    <!-- Author -->
     <input
       type="text"
       id="author"
       name="author"
       placeholder="Author"
       ngModel
+      #authorInput="ngModel"
       required
     />
-    @if ( createForm.controls['author'].invalid &&
-    createForm.controls['author'].touched ) {
+    @if (authorInput.invalid && authorInput.touched) {
     <div class="error">An author is required.</div>
     }
+
+    <!-- Description -->
     <textarea
       id="description"
       name="description"
       placeholder="Description"
       rows="3"
       ngModel
+      #descriptionInput="ngModel"
       required
     ></textarea>
-    @if ( createForm.controls['description'].invalid &&
-    createForm.controls['description'].touched ) {
+    @if (descriptionInput.invalid && descriptionInput.touched) {
     <div class="error">A description is required.</div>
     }
+
+    <!-- Button Group -->
     <div class="button-group">
-      <button type="submit">Create</button>
+      <button type="submit" [disabled]="form.invalid">Create</button>
       <button type="button" class="cancel-btn">
         <a routerLink="/coffee">Cancel</a>
       </button>

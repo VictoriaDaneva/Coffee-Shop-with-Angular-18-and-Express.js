@@ -31,12 +31,9 @@ export class RegisterComponent {
     }
 
     this.authService
-      .register({ username, email, phoneNumber, address, password, rePassword })
-      .subscribe({
-        next: () => this.router.navigate(['/home']),
-        error: (err) =>
-          (this.errorMessage =
-            err.message || 'Registration failed. Please try again.'),
+      .register(username, email, phoneNumber, address, password, rePassword)
+      .subscribe(() => {
+        this.router.navigate(['/home']);
       });
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ProductService } from '../product.service';
+import { User } from '../../types/user';
 
 @Component({
   selector: 'app-create',
@@ -21,15 +22,30 @@ export class CreateComponent {
       return;
     }
 
-    const { imageUrl, title, price, type, author, description } = form.value;
+    // const owner: User = JSON.parse(localStorage.getItem('user') || '[]');
 
-    this.productService
-      .create({ imageUrl, title, price, type, author, description })
-      .subscribe({
-        next: () => this.router.navigate(['/coffee']),
-        error: (err) =>
-          (this.errorMessage =
-            err.message || 'Registration failed. Please try again.'),
-      });
+    //  if (!owner || !owner._id) {
+    //    this.errorMessage = 'User not authenticated.';
+    //    return;
+    //  }
+
+    //  const { imageUrl, title, price, type, author, description } = form.value;
+
+    //  this.productService
+    //    .create({
+    //      imageUrl,
+    //      title,
+    //      price,
+    //      type,
+    //      author,
+    //      description,
+    //      owner, // Include the User object in the payload
+    //    })
+    //    .subscribe({
+    //      next: () => this.router.navigate(['/coffee']),
+    //      error: (err) =>
+    //        (this.errorMessage =
+    //          err.message || 'Creation failed. Please try again.'),
+    //    });
   }
 }

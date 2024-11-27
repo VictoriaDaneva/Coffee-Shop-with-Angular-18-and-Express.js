@@ -34,8 +34,10 @@ const authService = {
     if (!valid) {
       throw new Error("Invalid password!!!");
     }
+
     return this.generateToken(User);
   },
+
   async generateToken(User) {
     //token
     const payload = {

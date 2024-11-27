@@ -1,71 +1,91 @@
 <div class="card">
   <h2>Register</h2>
-  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="form">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form">
+    <!-- Username -->
     <input
       type="text"
       name="username"
       placeholder="Username"
       ngModel
       required
+      #usernameInput="ngModel"
       minlength="5"
     />
-    @if ( registerForm.controls['username'].invalid &&
-    registerForm.controls['username'].touched ) {
+    @if (usernameInput.invalid && usernameInput.touched) {
     <div class="error">Username must be at least 5 characters.</div>
     }
 
-    <input type="email" name="email" placeholder="Email" ngModel required />
-    @if ( registerForm.controls['email'].invalid &&
-    registerForm.controls['email'].touched ) {
+    <!-- Email -->
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      ngModel
+      required
+      #emailInput="ngModel"
+    />
+    @if (emailInput.invalid && emailInput.touched) {
     <div class="error">Valid email is required.</div>
     }
 
+    <!-- Phone Number -->
     <input
       type="text"
       name="phoneNumber"
       placeholder="Phone Number"
       ngModel
+      #phoneNumberInput="ngModel"
       required
     />
-    @if ( registerForm.controls['phoneNumber'].invalid &&
-    registerForm.controls['phoneNumber'].touched ) {
+    @if (phoneNumberInput.invalid && phoneNumberInput.touched) {
     <div class="error">Phone number is required.</div>
     }
 
-    <input type="text" name="address" placeholder="Address" ngModel required />
-    @if ( registerForm.controls['address'].invalid &&
-    registerForm.controls['address'].touched ) {
+    <!-- Address -->
+    <input
+      type="text"
+      name="address"
+      placeholder="Address"
+      ngModel
+      #addressInput="ngModel"
+      required
+    />
+    @if (addressInput.invalid && addressInput.touched) {
     <div class="error">Address is required.</div>
     }
 
+    <!-- Password -->
     <input
       type="password"
       name="password"
       placeholder="Password"
       ngModel
       required
+      #passwordInput="ngModel"
       minlength="5"
     />
-    @if ( registerForm.controls['password'].invalid &&
-    registerForm.controls['password'].touched ) {
+    @if (passwordInput.invalid && passwordInput.touched) {
     <div class="error">Password must be at least 5 characters.</div>
     }
 
+    <!-- Confirm Password -->
     <input
       type="password"
       name="rePassword"
       placeholder="Repeat Password"
       ngModel
+      #rePasswordInput="ngModel"
       required
     />
-    @if ( registerForm.controls['rePassword'].invalid &&
-    registerForm.controls['rePassword'].touched ) {
+    @if (rePasswordInput.invalid && rePasswordInput.touched) {
     <div class="error">Please confirm your password.</div>
     }
 
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="form.invalid">Register</button>
   </form>
 
+  <!-- Error Message -->
   @if (errorMessage) {
   <p class="error">{{ errorMessage }}</p>
   }

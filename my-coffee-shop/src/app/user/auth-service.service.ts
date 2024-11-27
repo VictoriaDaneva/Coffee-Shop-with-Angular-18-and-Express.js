@@ -1,40 +1,73 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { Observable } from 'rxjs';
-import { User } from '../types/user';
+import { User, UserForAuth } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3000/auth';
+  private user$$ = new BehaviorSubject<UserForAuth | null>(null);
+  private user$ = this.user$$.asObservable();
 
+  USER_KEY = '[user]';
+  user: UserForAuth | null = null;
+
+  get isLogged(): boolean {
+    return !!this.user;
+  }
   constructor(private http: HttpClient) {}
 
-  register(user: User): Observable<any> {
-    return this.http.post('http://localhost:3000/auth/register', user);
-  }
-
-  login(email: string, password: string): Observable<any> {
+  register(
+    username: string,
+    email: string,
+    phoneNumber: string,
+    address: string,
+    password: string,
+    rePassword: string
+  ) {
     return this.http
-      .post(`${this.baseUrl}/login`, { email, password })
-      .pipe(catchError(this.handleError));
+      .post<UserForAuth>(`/api/register`, {
+        username,
+        email,
+        phoneNumber,
+        address,
+        password,
+        rePassword,
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  logout(): Observable<any> {
+  login(email: string, password: string) {
     return this.http
-      .get(`${this.baseUrl}/logout`)
-      .pipe(catchError(this.handleError));
+      .post<UserForAuth>(`/api/login`, { email, password })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    let errorMessage = 'An unknown error occurred!';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      errorMessage = error.error.error || 'Server Error';
-    }
-    return throwError(() => new Error(errorMessage));
+  logout() {
+    return this.http
+      .post('/api/logout', {})
+      .pipe(tap((user) => this.user$$.next(null)));
   }
+
+  getProfile() {
+    return this.http
+      .get<UserForAuth>(``)
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  updateProfile(username: string, email: string, tel?: string) {
+    return this.http
+      .put<UserForAuth>(``, {
+        username,
+        email,
+        tel,
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  // ngOnDestroy(): void {
+  //   this.userSubscription?.unsubscribe();
+  // }
 }
