@@ -1,7 +1,5 @@
 import { Schema, model, Types } from "mongoose";
 
-//const { ObjectId } = mongoose.Schema.Types;
-
 const productSchema = new Schema({
   imageUrl: {
     type: String,
@@ -27,16 +25,16 @@ const productSchema = new Schema({
     type: String,
     required: [true, "Description is requered!!"],
   },
-  //  likes: [
-  //    {
-  //      type: ObjectId,
-  //      ref: "User",
-  //    },
-  //  ],
-  //  userId: {
-  //    type: ObjectId,
-  //    ref: "User",
-  //  },
+  likes: [
+    {
+      type: Types.ObjectId,
+      ref: "Likes",
+    },
+  ],
+  userId: {
+    type: Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Product = model("Product", productSchema);

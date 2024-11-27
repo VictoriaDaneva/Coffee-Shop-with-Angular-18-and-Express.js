@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { Observable } from 'rxjs';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +12,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  register(user: any): Observable<any> {
+  register(user: User): Observable<any> {
     return this.http.post('http://localhost:3000/auth/register', user);
   }
 
-  login(credentials: any): Observable<any> {
+  login(email: string, password: string): Observable<any> {
     return this.http
-      .post(`${this.baseUrl}/login`, credentials)
+      .post(`${this.baseUrl}/login`, { email, password })
       .pipe(catchError(this.handleError));
   }
 

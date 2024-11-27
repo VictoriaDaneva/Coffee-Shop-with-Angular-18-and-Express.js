@@ -1,51 +1,88 @@
 <div class="card">
   <h2>Create Product</h2>
-  <form action="/update-product" method="post" class="form">
+  <form
+    #createForm="ngForm"
+    (ngSubmit)="onSubmit(createForm)"
+    method="post"
+    class="form"
+  >
     <input
       type="url"
       id="image-url"
       name="imageUrl"
       placeholder="Image URL"
+      ngModel
       required
     />
+    @if ( createForm.controls['imageUrl'].invalid &&
+    createForm.controls['imageUrl'].touched ) {
+    <div class="error">An image is required.</div>
+    }
     <input
       type="text"
       id="title"
       name="title"
       placeholder="Product Title"
+      ngModel
       required
     />
+    @if ( createForm.controls['title'].invalid &&
+    createForm.controls['title'].touched ) {
+    <div class="error">A title is required.</div>
+    }
     <input
       type="string"
       id="price"
       name="price"
       placeholder="Price"
       step="0.01"
+      ngModel
       required
     />
+    @if ( createForm.controls['price'].invalid &&
+    createForm.controls['price'].touched ) {
+    <div class="error">A price is required.</div>
+    }
     <input
       type="text"
       id="type"
       name="type"
       placeholder="Product Type"
+      ngModel
       required
     />
-    <input type="text" id="type" name="author" placeholder="Author" required />
+    @if ( createForm.controls['type'].invalid &&
+    createForm.controls['type'].touched ) {
+    <div class="error">A type is required.</div>
+    }
+    <input
+      type="text"
+      id="author"
+      name="author"
+      placeholder="Author"
+      ngModel
+      required
+    />
+    @if ( createForm.controls['author'].invalid &&
+    createForm.controls['author'].touched ) {
+    <div class="error">An author is required.</div>
+    }
     <textarea
       id="description"
       name="description"
       placeholder="Description"
       rows="3"
+      ngModel
       required
     ></textarea>
+    @if ( createForm.controls['description'].invalid &&
+    createForm.controls['description'].touched ) {
+    <div class="error">A description is required.</div>
+    }
     <div class="button-group">
       <button type="submit">Create</button>
-      <button
-        type="button"
-        class="cancel-btn"
-        onclick="window.location.href='/products'"
-      >
-        Cancel
+      <button type="button" class="cancel-btn">
+        <a routerLink="/coffee">Cancel</a>
       </button>
     </div>
   </form>

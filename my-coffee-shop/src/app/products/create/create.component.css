@@ -72,10 +72,7 @@
   background: var(--color-primary);
 }
 
-.cancel-btn {
-  background: #711818;
-}
-
-.cancel-btn:hover {
-  background: #a32424;
+.cancel-btn > a {
+  color: white;
+  text-decoration: none;
 }

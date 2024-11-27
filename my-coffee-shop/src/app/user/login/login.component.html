@@ -2,8 +2,8 @@
   <h2>Login</h2>
   <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="form">
     <input type="email" placeholder="Email" name="email" ngModel required />
-    @if (loginForm.controls['email']?.invalid &&
-    loginForm.controls['email']?.touched) {
+    @if (loginForm.controls['email'].invalid &&
+    loginForm.controls['email'].touched) {
     <div class="error">Email is required</div>
     }
 
@@ -14,8 +14,8 @@
       ngModel
       required
     />
-    @if (loginForm.controls['password']?.invalid &&
-    loginForm.controls['password']?.touched) {
+    @if (loginForm.controls['password'].invalid &&
+    loginForm.controls['password'].touched) {
     <div class="error">Password is required</div>
     }
 

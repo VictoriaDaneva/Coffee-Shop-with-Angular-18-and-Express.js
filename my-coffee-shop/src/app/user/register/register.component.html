@@ -9,14 +9,14 @@
       required
       minlength="5"
     />
-    @if ( registerForm.controls['username']?.invalid &&
-    registerForm.controls['username']?.touched ) {
+    @if ( registerForm.controls['username'].invalid &&
+    registerForm.controls['username'].touched ) {
     <div class="error">Username must be at least 5 characters.</div>
     }
 
     <input type="email" name="email" placeholder="Email" ngModel required />
-    @if ( registerForm.controls['email']?.invalid &&
-    registerForm.controls['email']?.touched ) {
+    @if ( registerForm.controls['email'].invalid &&
+    registerForm.controls['email'].touched ) {
     <div class="error">Valid email is required.</div>
     }
 
@@ -27,14 +27,14 @@
       ngModel
       required
     />
-    @if ( registerForm.controls['phoneNumber']?.invalid &&
-    registerForm.controls['phoneNumber']?.touched ) {
+    @if ( registerForm.controls['phoneNumber'].invalid &&
+    registerForm.controls['phoneNumber'].touched ) {
     <div class="error">Phone number is required.</div>
     }
 
     <input type="text" name="address" placeholder="Address" ngModel required />
-    @if ( registerForm.controls['address']?.invalid &&
-    registerForm.controls['address']?.touched ) {
+    @if ( registerForm.controls['address'].invalid &&
+    registerForm.controls['address'].touched ) {
     <div class="error">Address is required.</div>
     }
 
@@ -46,8 +46,8 @@
       required
       minlength="5"
     />
-    @if ( registerForm.controls['password']?.invalid &&
-    registerForm.controls['password']?.touched ) {
+    @if ( registerForm.controls['password'].invalid &&
+    registerForm.controls['password'].touched ) {
     <div class="error">Password must be at least 5 characters.</div>
     }
 
@@ -58,8 +58,8 @@
       ngModel
       required
     />
-    @if ( registerForm.controls['rePassword']?.invalid &&
-    registerForm.controls['rePassword']?.touched ) {
+    @if ( registerForm.controls['rePassword'].invalid &&
+    registerForm.controls['rePassword'].touched ) {
     <div class="error">Please confirm your password.</div>
     }
 
