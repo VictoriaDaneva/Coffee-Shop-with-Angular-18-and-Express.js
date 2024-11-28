@@ -1,23 +1,38 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
-import { Observable } from 'rxjs';
-import { User, UserForAuth } from '../types/user';
+import { Injectable, OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { UserForAuth } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements OnDestroy {
   private user$$ = new BehaviorSubject<UserForAuth | null>(null);
   private user$ = this.user$$.asObservable();
 
   USER_KEY = '[user]';
   user: UserForAuth | null = null;
+  userSubscription: Subscription | null = null;
 
   get isLogged(): boolean {
     return !!this.user;
   }
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const savedUser = localStorage.getItem(this.USER_KEY);
+    if (savedUser) {
+      this.user$$.next(JSON.parse(savedUser)); // Update the observable with saved user
+    }
+
+    // Sync `user$$` with `user`
+    this.userSubscription = this.user$.subscribe((user) => {
+      this.user = user;
+      if (user) {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(user)); // Save user to localStorage
+      } else {
+        localStorage.removeItem(this.USER_KEY); // Clear user data on logout
+      }
+    });
+  }
 
   register(
     username: string,
@@ -67,7 +82,7 @@ export class AuthService {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  // ngOnDestroy(): void {
-  //   this.userSubscription?.unsubscribe();
-  // }
+  ngOnDestroy(): void {
+    this.userSubscription?.unsubscribe();
+  }
 }

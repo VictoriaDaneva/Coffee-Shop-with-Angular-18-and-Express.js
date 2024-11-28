@@ -24,7 +24,7 @@ authController.post("/register", isGuest, async (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    return res.status(201).json(User);
+    return res.status(201).json({ User, token });
   } catch (err) {
     console.error(err.message);
     return res.status(400).json({ error: getErrrorMessage(err) });
@@ -44,15 +44,20 @@ authController.post("/login", isGuest, async (req, res) => {
       secure: true,
     });
 
-    res.status(200).json(User);
+    res.status(200).json({ User, token });
   } catch (err) {
     res.status(400).json({ error: getErrrorMessage(err) });
   }
 });
 
 // Logout
-authController.get("/logout", (req, res) => {
-  res.clearCookie(AUTH_COOKIE_NAME);
+authController.post("/logout", (req, res) => {
+  res.clearCookie(AUTH_COOKIE_NAME, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "Lax",
+  });
+  res.status(200).json({ message: "Logout successful" });
 });
 
 export default authController;
