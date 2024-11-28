@@ -20,16 +20,15 @@ export class AuthService implements OnDestroy {
   constructor(private http: HttpClient) {
     const savedUser = localStorage.getItem(this.USER_KEY);
     if (savedUser) {
-      this.user$$.next(JSON.parse(savedUser)); // Update the observable with saved user
+      this.user$$.next(JSON.parse(savedUser));
     }
 
-    // Sync `user$$` with `user`
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
       if (user) {
-        localStorage.setItem(this.USER_KEY, JSON.stringify(user)); // Save user to localStorage
+        localStorage.setItem(this.USER_KEY, JSON.stringify(user));
       } else {
-        localStorage.removeItem(this.USER_KEY); // Clear user data on logout
+        localStorage.removeItem(this.USER_KEY);
       }
     });
   }
