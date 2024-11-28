@@ -48,7 +48,7 @@ const authService = {
 
     const header = { expiresIn: "2h" };
     const token = await jwt.sign(payload, process.env.JWT_SECRET, header);
-    return token;
+    return { User, token };
   },
 };
 

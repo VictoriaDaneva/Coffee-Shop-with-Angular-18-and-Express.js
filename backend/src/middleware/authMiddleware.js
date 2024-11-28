@@ -18,20 +18,21 @@ export const authMiddleware = async (req, res, next) => {
     next();
   } catch (err) {
     res.clearCookie(AUTH_COOKIE_NAME);
-    res.redirect("/auth/login");
   }
 };
 
 export const isAuth = (req, res, next) => {
   if (!req.user) {
-    return res.redirect("/auth/login");
+    return res.status(401).json({ message: "Unauthorized access" });
   }
   next();
 };
 
 export const isGuest = (req, res, next) => {
   if (req.user) {
-    return redirect("/404");
+    return res
+      .status(403)
+      .json({ message: "Forbidden for authenticated users" });
   }
   next();
 };

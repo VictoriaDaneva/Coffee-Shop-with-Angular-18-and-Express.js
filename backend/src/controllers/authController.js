@@ -2,19 +2,16 @@ import { Router } from "express";
 import authService from "../services/authService.js";
 import { AUTH_COOKIE_NAME } from "../constants.js";
 import { getErrrorMessage } from "../utils/errorUtils.js";
-import { isGuest } from "../middleware/authMiddleware.js";
+import { isAuth, isGuest } from "../middleware/authMiddleware.js";
 
 const authController = Router();
 
 // Register
 authController.post("/register", isGuest, async (req, res) => {
-  const { username, email, phoneNumber, address, password, rePassword } =
-    req.body;
-
-  console.log({ username, email, phoneNumber, address, password, rePassword });
-
   try {
-    const token = await authService.register(
+    const { username, email, phoneNumber, address, password, rePassword } =
+      req.body;
+    const { User, token } = await authService.register(
       username,
       email,
       phoneNumber,
@@ -27,18 +24,10 @@ authController.post("/register", isGuest, async (req, res) => {
       sameSite: "none",
       secure: true,
     });
-    res.json({ token });
-    console.log("EVERYTHING IS OKAY");
+    return res.status(201).json(User);
   } catch (err) {
-    console.log(getErrrorMessage(err));
-
-    res.status(400).json({
-      username,
-      email,
-      phoneNumber,
-      address,
-      error: getErrrorMessage(err),
-    });
+    console.error(err.message);
+    return res.status(400).json({ error: getErrrorMessage(err) });
   }
 });
 
@@ -47,7 +36,7 @@ authController.post("/login", isGuest, async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const token = await authService.login(email, password);
+    const { User, token } = await authService.login(email, password);
 
     res.cookie(AUTH_COOKIE_NAME, token, {
       httpOnly: true,
@@ -55,8 +44,7 @@ authController.post("/login", isGuest, async (req, res) => {
       secure: true,
     });
 
-    // Respond with the token and user details
-    res.status(200).json(user);
+    res.status(200).json(User);
   } catch (err) {
     res.status(400).json({ error: getErrrorMessage(err) });
   }
