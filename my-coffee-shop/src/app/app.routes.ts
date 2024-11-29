@@ -7,6 +7,7 @@ import { CreateComponent } from './products/create/create.component';
 import { CoffeeComponent } from './coffee/coffee.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ErrorComponent } from './error/error.component';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'profile/edit/:id', component: EditProfileComponent },
   { path: 'create', component: CreateComponent },
   { path: 'coffee', component: CoffeeComponent },
   { path: 'about-us', component: AboutUsComponent },

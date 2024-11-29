@@ -1,19 +1,18 @@
 <div class="profile-card">
   <div class="profile-left">
     <div class="profile-image">
-      <img src="/mocha blend.webp" alt="Profile Picture" />
+      <img [src]="profileDetails.imageUrl" alt="Profile Picture" />
     </div>
   </div>
   <div class="profile-right">
     <h2>Profile</h2>
-    <p><strong>Name:</strong> User Name</p>
-    <p><strong>Email:</strong> mailexpaytech.co</p>
-    <p><strong>Phone Number:</strong> +20 01274318900</p>
-    <p>
-      <strong>Address:</strong> 285 N Broad St, Elizabeth, NJ<br />
-      07208, USA
-    </p>
-    <button class="edit-profile-btn">Edit Profile</button>
+    <p><strong>Name:</strong> {{ profileDetails.username }}</p>
+    <p><strong>Email:</strong> {{ profileDetails.email }}</p>
+    <p><strong>Phone Number:</strong> {{ profileDetails.phoneNumber }}</p>
+    <p><strong>Address:</strong> {{ profileDetails.address }}<br /></p>
+    <button class="edit-profile-btn">
+      <a [routerLink]="['/profile/edit', profileDetails.id]">Edit Profile</a>
+    </button>
   </div>
 </div>
 

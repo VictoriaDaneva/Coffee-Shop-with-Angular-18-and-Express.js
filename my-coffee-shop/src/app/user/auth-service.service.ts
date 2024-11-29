@@ -50,13 +50,21 @@ export class AuthService implements OnDestroy {
         password,
         rePassword,
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((user) => {
+          this.user$$.next(user);
+          this.getProfile().subscribe();
+        })
+      );
   }
 
   login(email: string, password: string) {
-    return this.http
-      .post<UserForAuth>(`/api/login`, { email, password })
-      .pipe(tap((user) => this.user$$.next(user)));
+    return this.http.post<UserForAuth>(`/api/login`, { email, password }).pipe(
+      tap((user) => {
+        this.user$$.next(user);
+        this.getProfile().subscribe();
+      })
+    );
   }
 
   logout() {
@@ -67,7 +75,7 @@ export class AuthService implements OnDestroy {
 
   getProfile() {
     return this.http
-      .get<UserForAuth>(``)
+      .get<UserForAuth>(`/api/users/profile`)
       .pipe(tap((user) => this.user$$.next(user)));
   }
 

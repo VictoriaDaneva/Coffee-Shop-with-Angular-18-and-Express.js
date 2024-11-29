@@ -5,5 +5,5 @@ export interface Product {
   type: string;
   author: string;
   description: string;
-  owner: string | null;
+  owner: string;
 }

@@ -3,6 +3,9 @@ import bcrypt from "bcrypt";
 import jwt from "../lib/jwt.js";
 
 const authService = {
+  async getProfile(userId) {
+    return user.findOne({ _id: userId }, { password: 0, __v: 0 }).lean();
+  },
   async register(username, email, phoneNumber, address, password, rePassword) {
     const User = await user.findOne({ $or: [{ email }, { username }] });
 

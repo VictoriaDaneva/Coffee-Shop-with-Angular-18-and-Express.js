@@ -59,6 +59,10 @@
 .edit-profile-btn:hover {
   background: var(--color-primary);
 }
+.edit-profile-btn > a {
+  color: white;
+  text-decoration: none;
+}
 
 /*wishlist*/
 .recommended-items {

@@ -4,6 +4,10 @@ import bcrypt from "bcrypt";
 const SALT_ROUNDS = 10;
 
 const userSchema = new Schema({
+  imageUrl: {
+    type: String,
+    required: [false],
+  },
   username: {
     type: String,
     required: [true, "Username is required!"],
