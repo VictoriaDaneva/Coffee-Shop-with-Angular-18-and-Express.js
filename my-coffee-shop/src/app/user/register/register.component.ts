@@ -22,8 +22,15 @@ export class RegisterComponent {
       return;
     }
 
-    const { username, email, phoneNumber, address, password, rePassword } =
-      form.value;
+    const {
+      imageUrl,
+      username,
+      email,
+      phoneNumber,
+      address,
+      password,
+      rePassword,
+    } = form.value;
 
     if (password !== rePassword) {
       this.errorMessage = 'Passwords do not match!';
@@ -31,7 +38,15 @@ export class RegisterComponent {
     }
 
     this.authService
-      .register(username, email, phoneNumber, address, password, rePassword)
+      .register(
+        imageUrl,
+        username,
+        email,
+        phoneNumber,
+        address,
+        password,
+        rePassword
+      )
       .subscribe(() => {
         this.router.navigate(['/home']);
       });

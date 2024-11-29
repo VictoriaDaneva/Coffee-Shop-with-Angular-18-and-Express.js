@@ -3,10 +3,24 @@ import bcrypt from "bcrypt";
 import jwt from "../lib/jwt.js";
 
 const authService = {
+  async editProfile(userId, userData) {
+    return user.findByIdAndUpdate(userId, userData, {
+      runValidators: true,
+      new: true,
+    });
+  },
   async getProfile(userId) {
     return user.findOne({ _id: userId }, { password: 0, __v: 0 }).lean();
   },
-  async register(username, email, phoneNumber, address, password, rePassword) {
+  async register(
+    imageUrl,
+    username,
+    email,
+    phoneNumber,
+    address,
+    password,
+    rePassword
+  ) {
     const User = await user.findOne({ $or: [{ email }, { username }] });
 
     if (rePassword !== password) {
@@ -16,6 +30,7 @@ const authService = {
       throw new Error("User already exists!!!");
     }
     const newUser = await user.create({
+      imageUrl,
       username,
       email,
       phoneNumber,

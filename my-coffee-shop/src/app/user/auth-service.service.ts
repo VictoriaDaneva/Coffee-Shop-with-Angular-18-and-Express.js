@@ -34,6 +34,7 @@ export class AuthService implements OnDestroy {
   }
 
   register(
+    imageUrl: string,
     username: string,
     email: string,
     phoneNumber: string,
@@ -43,6 +44,7 @@ export class AuthService implements OnDestroy {
   ) {
     return this.http
       .post<UserForAuth>(`/api/register`, {
+        imageUrl,
         username,
         email,
         phoneNumber,
@@ -79,12 +81,20 @@ export class AuthService implements OnDestroy {
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
-  updateProfile(username: string, email: string, tel?: string) {
+  updateProfile(
+    imageUrl: string,
+    username: string,
+    email: string,
+    phoneNumber: string,
+    address: string
+  ) {
     return this.http
-      .put<UserForAuth>(``, {
+      .post<UserForAuth>(`/api/users/profile/edit`, {
+        imageUrl,
         username,
         email,
-        tel,
+        phoneNumber,
+        address,
       })
       .pipe(tap((user) => this.user$$.next(user)));
   }

@@ -10,7 +10,7 @@ import {
 
 const profileController = Router();
 
-//Profile
+//Get Profile
 profileController.get("/", authMiddleware, async (req, res) => {
   const userId = req.user._id;
   try {
@@ -19,6 +19,19 @@ profileController.get("/", authMiddleware, async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     return res.status(200).json(data); // Return the profile data directly
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+//Update Profile
+profileController.post("/edit", isAuth, async (req, res) => {
+  const userId = req.user._id;
+  const userData = req.body;
+  try {
+    const data = await authService.editProfile(userId, userData);
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({ error: "Internal server error" });

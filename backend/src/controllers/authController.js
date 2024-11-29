@@ -9,9 +9,17 @@ const authController = Router();
 // Register
 authController.post("/register", isGuest, async (req, res) => {
   try {
-    const { username, email, phoneNumber, address, password, rePassword } =
-      req.body;
+    const {
+      imageUrl,
+      username,
+      email,
+      phoneNumber,
+      address,
+      password,
+      rePassword,
+    } = req.body;
     const { User, token } = await authService.register(
+      imageUrl,
       username,
       email,
       phoneNumber,

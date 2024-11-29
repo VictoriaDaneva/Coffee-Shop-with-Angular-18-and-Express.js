@@ -1,46 +1,78 @@
 <div class="card">
   <h2>Edit Profile</h2>
-  <form action="/update-profile" method="post" class="form">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form">
+    <input
+      type="text"
+      id="imageUrl"
+      name="imageUrl"
+      placeholder="image"
+      value="image"
+      ngModel
+      #imageUrlInput="ngModel"
+      required
+    />
+    @if (imageUrlInput.invalid && imageUrlInput.touched) {
+    <div class="error">The image is requered!!.</div>
+    }
     <input
       type="text"
       id="name"
       name="name"
       placeholder="Name"
       value="User Name"
+      ngModel
+      #nameInput="ngModel"
       required
     />
+    @if (nameInput.invalid && nameInput.touched) {
+    <div class="error">Name is requered!!.</div>
+    }
     <input
       type="email"
       id="email"
       name="email"
       placeholder="Email"
       value="mail@expaytech.co"
+      ngModel
+      #emailInput="ngModel"
       required
     />
+    @if (emailInput.invalid && emailInput.touched) {
+    <div class="error">Email is requered!!.</div>
+    }
     <input
       type="tel"
       id="phone"
-      name="phone"
+      name="phoneNumber"
       placeholder="Phone Number"
       value="+20 01274318900"
+      ngModel
+      #phoneNumberInput="ngModel"
       required
     />
+    @if (phoneNumberInput.invalid && phoneNumberInput.touched) {
+    <div class="error">Phone number is requered!!.</div>
+    }
     <textarea
       id="address"
       name="address"
       placeholder="Address"
       rows="3"
+      ngModel
+      #addressInput="ngModel"
       required
-    >
-285 N Broad St, Elizabeth, NJ, 07208, USA</textarea
-    >
-    <button type="submit">Save Changes</button>
-    <button
-      type="button"
-      class="cancel-btn"
-      onclick="window.location.href='/products'"
-    >
-      Cancel
+    ></textarea>
+    @if (addressInput.invalid && addressInput.touched) {
+    <div class="error">Address is requered!!.</div>
+    }
+    <!-- Error Message -->
+    @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+    }
+
+    <button type="submit" [disabled]="form.invalid">Save Changes</button>
+    <button type="button" class="cancel-btn">
+      <a routerLink="/profile">Cancel</a>
     </button>
   </form>
 </div>
