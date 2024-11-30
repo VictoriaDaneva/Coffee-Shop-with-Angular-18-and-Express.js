@@ -2,6 +2,9 @@ import Product from "../models/product.js";
 import user from "../models/user.js";
 
 const coffeeService = {
+  async removeProduct(productId) {
+    return Product.findByIdAndDelete(productId);
+  },
   async editProduct(coffeeParams, productId) {
     return Product.findByIdAndUpdate(productId, coffeeParams, {
       runValidators: true,

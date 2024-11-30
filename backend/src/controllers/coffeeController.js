@@ -5,6 +5,19 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
 
+coffeeController.delete("/:id", async (req, res) => {
+  const productId = req.params.id;
+  try {
+    await coffeeService.removeProduct(productId);
+    return res.status(200).json({ message: "Product deleted successfully" });
+  } catch (error) {
+    console.log(getErrrorMessage(err));
+    return res.status(400).json({
+      error: getErrrorMessage(err),
+    });
+  }
+});
+
 coffeeController.post("/:id/edit", async (req, res) => {
   const productId = req.params.id;
   const coffeeParams = req.body;
