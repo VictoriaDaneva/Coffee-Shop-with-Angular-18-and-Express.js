@@ -21,15 +21,15 @@ coffeeController.get("/", async (req, res) => {
 coffeeController.post("/", isAuth, async (req, res) => {
   const coffeeData = req.body;
   const userId = req.user;
-  console.log(coffeeData, userId);
 
   try {
-    const data = await coffeeService.create(coffeeData, userId);
-    return res.json({ data });
+    const createdProduct = await coffeeService.create(coffeeData, userId);
+    await coffeeService.addPostToUser(userId, createdProduct._id);
+    return res.status(201).json({ data: createdProduct });
   } catch (err) {
-    console.log(getErrrorMessage(err));
-    return res.status(400).json({
-      error: getErrrorMessage(err),
+    console.error(err.message);
+    return res.status(500).json({
+      error: "Internal server error",
     });
   }
 });
