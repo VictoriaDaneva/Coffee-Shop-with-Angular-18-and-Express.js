@@ -2,6 +2,12 @@ import Product from "../models/product.js";
 import user from "../models/user.js";
 
 const coffeeService = {
+  async editProduct(coffeeParams, productId) {
+    return Product.findByIdAndUpdate(productId, coffeeParams, {
+      runValidators: true,
+      new: true,
+    });
+  },
   async getOne(productId) {
     return Product.findById(productId).lean();
   },

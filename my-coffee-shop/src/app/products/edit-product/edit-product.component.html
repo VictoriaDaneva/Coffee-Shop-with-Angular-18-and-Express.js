@@ -1,51 +1,71 @@
 <div class="card">
   <h2>Edit Product</h2>
-  <form action="/update-product" method="post" class="form">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form">
     <input
       type="url"
       id="image-url"
       name="imageUrl"
       placeholder="Image URL"
+      ngModel
+      #imageUrlInput="ngModel"
       required
     />
+    @if (imageUrlInput.invalid && imageUrlInput.touched) {
+    <div class="error">The image is requered!!.</div>
+    }
     <input
       type="text"
       id="title"
       name="title"
       placeholder="Product Title"
+      ngModel
+      #titleInput="ngModel"
       required
     />
+    @if (titleInput.invalid && titleInput.touched) {
+    <div class="error">Name is requered!!.</div>
+    }
     <input
       type="number"
       id="price"
       name="price"
       placeholder="Price"
       step="0.01"
+      ngModel
+      #priceInput="ngModel"
       required
     />
+    @if (priceInput.invalid && priceInput.touched) {
+    <div class="error">Email is requered!!.</div>
+    }
     <input
       type="text"
       id="type"
       name="type"
       placeholder="Product Type"
+      ngModel
+      #typeInput="ngModel"
       required
     />
+    @if (typeInput.invalid && typeInput.touched) {
+    <div class="error">Email is requered!!.</div>
+    }
     <textarea
       id="description"
       name="description"
       placeholder="Description"
       rows="3"
+      ngModel
+      #descriptionInput="ngModel"
       required
     ></textarea>
+    @if (descriptionInput.invalid && descriptionInput.touched) {
+    <div class="error">Email is requered!!.</div>
+    }
     <div class="button-group">
       <button type="submit">Save Changes</button>
-      <button
-        type="button"
-        class="cancel-btn"
-        onclick="window.location.href='/products'"
-      >
-        Cancel
-      </button>
+      <a [routerLink]="['/coffee']"></a>
+      <button type="button" class="cancel-btn">Cancel</button>
     </div>
   </form>
 </div>

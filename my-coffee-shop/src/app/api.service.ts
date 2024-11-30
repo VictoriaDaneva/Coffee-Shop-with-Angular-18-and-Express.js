@@ -36,8 +36,8 @@ export class ApiService {
     type: string,
     description: string
   ) {
-    const payload = { imageUrl, title, price, type, description };
-    return this.http.put<Product>(`/api/products/${productId}`, payload);
+    const payload = { productId, imageUrl, title, price, type, description };
+    return this.http.post<Product>(`/api/products/${productId}/edit`, payload);
   }
 
   deleteProduct(productId: string) {

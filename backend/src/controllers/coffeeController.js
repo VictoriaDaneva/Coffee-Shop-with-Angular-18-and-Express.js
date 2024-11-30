@@ -4,6 +4,20 @@ import { getErrrorMessage } from "../utils/errorUtils.js";
 import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
+
+coffeeController.post("/:id/edit", async (req, res) => {
+  const productId = req.params.id;
+  const coffeeParams = req.body;
+  try {
+    const data = await coffeeService.editProduct(coffeeParams, productId);
+    return res.json(data);
+  } catch (err) {
+    console.log(getErrrorMessage(err));
+    return res.status(400).json({
+      error: getErrrorMessage(err),
+    });
+  }
+});
 coffeeController.get("/:id", async (req, res) => {
   const productId = req.params.id;
   console.log(productId);
