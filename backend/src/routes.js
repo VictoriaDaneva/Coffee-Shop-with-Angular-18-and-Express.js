@@ -10,7 +10,7 @@ const routes = Router();
 //routes.use(homeController);
 routes.use("/api/users/profile", profileController);
 routes.use("/api", authController);
-routes.use("/api/coffee", coffeeController);
+routes.use("/api/products", coffeeController);
 //
 //routes.all("*", (req, res) => {
 //  res.render("home/404", { tittle: "404 Page" });

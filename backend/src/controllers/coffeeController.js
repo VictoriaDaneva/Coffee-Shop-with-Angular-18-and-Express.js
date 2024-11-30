@@ -5,13 +5,13 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
 
-coffeeController.post("/create", isAuth, async (req, res) => {
+coffeeController.post("/", isAuth, async (req, res) => {
   const coffeeData = req.body;
   const userId = req.user;
   console.log(coffeeData, userId);
 
   try {
-    //const data = await coffeeService.create(coffeeData, userId);
+    const data = await coffeeService.create(coffeeData, userId);
     res.json({ data });
   } catch (err) {
     console.log(getErrrorMessage(err));

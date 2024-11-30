@@ -16,7 +16,7 @@ export class ApiService {
     return this.http.get<Product>(`api/product/${id}`);
   }
 
-  createPost(
+  createProduct(
     imageUrl: string,
     title: string,
     price: string,
@@ -25,7 +25,7 @@ export class ApiService {
     description: string
   ) {
     const payload = { imageUrl, title, price, type, author, description };
-    return this.http.post(`api/products`, payload);
+    return this.http.post(`/api/products`, payload);
   }
 
   updateProduct(

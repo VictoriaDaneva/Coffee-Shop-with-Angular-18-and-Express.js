@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { ProductService } from '../product.service';
 import { User } from '../../types/user';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-create',
@@ -14,38 +14,19 @@ import { User } from '../../types/user';
 export class CreateComponent {
   errorMessage: string = '';
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
-  onSubmit(form: NgForm): void {
+  onSubmit(form: NgForm) {
     if (form.invalid) {
       this.errorMessage = 'Please fill in all required fields.';
       return;
     }
+    const { imageUrl, title, price, type, author, description } = form.value;
 
-    // const owner: User = JSON.parse(localStorage.getItem('user') || '[]');
-
-    //  if (!owner || !owner._id) {
-    //    this.errorMessage = 'User not authenticated.';
-    //    return;
-    //  }
-
-    //  const { imageUrl, title, price, type, author, description } = form.value;
-
-    //  this.productService
-    //    .create({
-    //      imageUrl,
-    //      title,
-    //      price,
-    //      type,
-    //      author,
-    //      description,
-    //      owner, // Include the User object in the payload
-    //    })
-    //    .subscribe({
-    //      next: () => this.router.navigate(['/coffee']),
-    //      error: (err) =>
-    //        (this.errorMessage =
-    //          err.message || 'Creation failed. Please try again.'),
-    //    });
+    this.apiService
+      .createProduct(imageUrl, title, price, type, author, description)
+      .subscribe(() => {
+        this.router.navigate(['/coffee']);
+      });
   }
 }
