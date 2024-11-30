@@ -24,16 +24,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start; /* or 'center', depending on alignment preference */
 }
 
 .product-card {
+  flex: 1 1 calc(33.333% - 40px); /* Allow three cards per row, adjust for gap */
+  box-sizing: border-box; /* Ensure padding and borders are included in width */
+  max-width: 300px; /* Prevent cards from growing too large */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 15px;
   text-align: center;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card:hover {

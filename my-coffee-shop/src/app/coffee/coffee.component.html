@@ -1,92 +1,33 @@
 <section class="catalog">
   <header>
     <h1>Shop All Products</h1>
-    <p>Total Products: 48</p>
+    <p>Total Products: {{ products?.length || 0 }}</p>
   </header>
 
+  @if (isLoading) {
+  <app-loader></app-loader>
+  } @else {
   <div class="product-grid">
-    <!-- Product 1 -->
+    @for (product of products; track $index) {
     <article
       class="product-card"
       itemscope
       itemtype="https://schema.org/Product"
     >
-      <img
-        src="/holiday blend.webp"
-        alt="Peppermint Mocha Flavored Blend Coffee"
-        class="product-image"
-        itemprop="image"
-      />
+      <img [src]="product.imageUrl" class="product-image" itemprop="image" />
       <div class="product-details">
-        <h2 class="product-name" itemprop="name">Holiday Blend</h2>
-        <p class="product-price">€24</p>
+        <h2 class="product-name" itemprop="name">{{ product.title }}</h2>
+        <p class="product-price">€{{ product.price }}</p>
         <p class="product-description" itemprop="description">
-          A medium roast ground coffee, perfect for the holiday season.
+          {{ product.description }}
         </p>
-        <button
-          class="details-button"
-          aria-label="See more details about Holiday Blend"
-          onclick="window.location.href='/product/holiday-blend'"
-        >
-          See More Details
+        <button class="details-button" aria-label="See more details">
+          <a [routerLink]="['/coffee/details', product._id]"></a> See More
+          Details
         </button>
       </div>
     </article>
-
-    <!-- Product 2 -->
-    <article
-      class="product-card"
-      itemscope
-      itemtype="https://schema.org/Product"
-    >
-      <img
-        src="/mocha blend.webp"
-        alt="Peppermint Mocha Flavored Blend Coffee"
-        class="product-image"
-        itemprop="image"
-      />
-      <div class="product-details">
-        <h2 class="product-name" itemprop="name">Peppermint Mocha Blend</h2>
-        <p class="product-price">€24</p>
-        <p class="product-description" itemprop="description">
-          A festive peppermint mocha flavored coffee blend.
-        </p>
-        <button
-          class="details-button"
-          aria-label="See more details about Peppermint Mocha Blend"
-          onclick="window.location.href='/peppermint-mocha-blend'"
-        >
-          See More Details
-        </button>
-      </div>
-    </article>
-
-    <!-- Product 3 -->
-    <article
-      class="product-card"
-      itemscope
-      itemtype="https://schema.org/Product"
-    >
-      <img
-        src="/peppermint blend.webp"
-        alt="Peppermint Matcha Tin"
-        class="product-image"
-        itemprop="image"
-      />
-      <div class="product-details">
-        <h2 class="product-name" itemprop="name">Peppermint Matcha</h2>
-        <p class="product-price">€25</p>
-        <p class="product-description" itemprop="description">
-          A refreshing tin of peppermint matcha green tea.
-        </p>
-        <button
-          class="details-button"
-          aria-label="See more details about Peppermint Matcha"
-          onclick="window.location.href='/product/peppermint-matcha'"
-        >
-          See More Details
-        </button>
-      </div>
-    </article>
+    }
   </div>
+  }
 </section>

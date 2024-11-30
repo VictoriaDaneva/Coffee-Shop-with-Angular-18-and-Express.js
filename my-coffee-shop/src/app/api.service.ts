@@ -9,11 +9,11 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
-    return this.http.get<Product[]>(`api/products`);
+    return this.http.get<Product[]>(`/api/products`);
   }
 
   getSingleProduct(id: string) {
-    return this.http.get<Product>(`api/product/${id}`);
+    return this.http.get<Product>(`/api/product/${id}`);
   }
 
   createProduct(

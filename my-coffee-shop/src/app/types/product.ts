@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export interface Product {
   _id: string;
   imageUrl: string;
@@ -7,5 +9,6 @@ export interface Product {
   author: string;
   description: string;
   likes: string[];
-  owner: string;
+  owner: User;
+  _v: string;
 }

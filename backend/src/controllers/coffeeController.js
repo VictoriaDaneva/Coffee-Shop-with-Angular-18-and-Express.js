@@ -5,6 +5,19 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
 
+coffeeController.get("/", async (req, res) => {
+  try {
+    const data = await coffeeService.getAll();
+    console.log(data);
+
+    return res.json(data);
+  } catch (err) {
+    console.error(getErrrorMessage(err));
+    return res.status(400).json({
+      error: getErrrorMessage(err),
+    });
+  }
+});
 coffeeController.post("/", isAuth, async (req, res) => {
   const coffeeData = req.body;
   const userId = req.user;
@@ -12,10 +25,10 @@ coffeeController.post("/", isAuth, async (req, res) => {
 
   try {
     const data = await coffeeService.create(coffeeData, userId);
-    res.json({ data });
+    return res.json({ data });
   } catch (err) {
     console.log(getErrrorMessage(err));
-    res.status(400).json({
+    return res.status(400).json({
       error: getErrrorMessage(err),
     });
   }
