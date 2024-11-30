@@ -4,12 +4,23 @@ import { getErrrorMessage } from "../utils/errorUtils.js";
 import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
+coffeeController.get("/:id", async (req, res) => {
+  const productId = req.params.id;
+  console.log(productId);
 
+  try {
+    const data = await coffeeService.getOne(productId);
+    return res.json(data);
+  } catch (err) {
+    console.log(getErrrorMessage(err));
+    return res.status(400).json({
+      error: getErrrorMessage(err),
+    });
+  }
+});
 coffeeController.get("/", async (req, res) => {
   try {
     const data = await coffeeService.getAll();
-    console.log(data);
-
     return res.json(data);
   } catch (err) {
     console.error(getErrrorMessage(err));

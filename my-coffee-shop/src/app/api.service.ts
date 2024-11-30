@@ -13,7 +13,7 @@ export class ApiService {
   }
 
   getSingleProduct(id: string) {
-    return this.http.get<Product>(`/api/product/${id}`);
+    return this.http.get<Product>(`/api/products/${id}`);
   }
 
   createProduct(

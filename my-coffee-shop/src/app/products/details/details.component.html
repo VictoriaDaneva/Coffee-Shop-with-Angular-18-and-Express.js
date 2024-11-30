@@ -1,28 +1,27 @@
 <section class="product-details-page">
   <div class="product-details">
     <div class="product-image">
-      <img
-        src="/mocha blend.webp"
-        alt="Chocolate Matcha Green Tea Powder"
-        class="main-image"
-        itemprop="image"
-      />
+      <img [src]="product.imageUrl" class="main-image" itemprop="image" />
     </div>
     <div class="product-info">
-      <h1 itemprop="name">Chocolate Matcha Green Tea Powder</h1>
-      <p class="product-price" name="price">€26.00</p>
-      <p class="product-type" name="type">Type: ground coffee</p>
+      <h1 itemprop="name">{{ product.title }}</h1>
+      <p class="product-price" name="price">€{{ product.price }}</p>
+      <p class="product-type" name="type">Type: {{ product.type }}</p>
       <p class="product-description" name="description">
-        Our limited edition Chocolate Matcha is made from pure Cameroonian cacao
-        and green tea that retains its rich flavor. It’s gluten-free, packed
-        with antioxidants, and perfect for a health boost!
+        {{ product.description }}
       </p>
-      <p class="product-author" name="author">Made by: Victoria EOOD</p>
+      <p class="product-author" name="author">Made by: {{ username }}</p>
 
       <div class="wishlist-actions">
-        <button class="wishlist-button">Wishlist</button>
-        <button class="edit-button">Edit</button>
-        <button class="delete-button">Delete</button>
+        <a href="">
+          <button class="wishlist-button">Wishlist</button>
+        </a>
+        <a [routerLink]="['/coffee/', product._id, '/edit']">
+          <button class="edit-button">Edit</button>
+        </a>
+        <a (click)="delete()">
+          <button class="delete-button">Delete</button>
+        </a>
       </div>
       <p class="installment-info">
         Pay in interest-free installments on orders over €30.

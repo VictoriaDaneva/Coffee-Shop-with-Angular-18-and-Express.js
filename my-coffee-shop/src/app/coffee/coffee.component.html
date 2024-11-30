@@ -21,10 +21,11 @@
         <p class="product-description" itemprop="description">
           {{ product.description }}
         </p>
-        <button class="details-button" aria-label="See more details">
-          <a [routerLink]="['/coffee/details', product._id]"></a> See More
-          Details
-        </button>
+        <a [routerLink]="['/coffee/', product._id]">
+          <button class="details-button" aria-label="See more details">
+            See More Details
+          </button>
+        </a>
       </div>
     </article>
     }
