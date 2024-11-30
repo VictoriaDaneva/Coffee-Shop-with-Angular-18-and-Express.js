@@ -13,7 +13,7 @@ export interface User {
 }
 
 export interface UserForAuth {
-  _id: string; // Instead of _id
+  _id: string;
   imageUrl?: string;
   username: string;
   email: string;
