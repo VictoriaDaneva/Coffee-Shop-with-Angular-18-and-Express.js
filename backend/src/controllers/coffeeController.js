@@ -5,7 +5,22 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
 
-coffeeController.delete("/:id", async (req, res) => {
+coffeeController.get("/:id/like", isOwner, async (req, res) => {
+  const productId = req.params.id;
+  const userId = req.user._id;
+  try {
+    await coffeeService.like(productId, userId);
+    await coffeeService.addToWishlistUser(productId, userId);
+    res.status(200).json({ message: "Product is liked successfully" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({
+      error: getErrrorMessage(err),
+    });
+  }
+});
+
+coffeeController.delete("/:id", checkIsOwner, async (req, res) => {
   const productId = req.params.id;
   try {
     await coffeeService.removeProduct(productId);
@@ -18,7 +33,7 @@ coffeeController.delete("/:id", async (req, res) => {
   }
 });
 
-coffeeController.post("/:id/edit", async (req, res) => {
+coffeeController.post("/:id/edit", checkIsOwner, async (req, res) => {
   const productId = req.params.id;
   const coffeeParams = req.body;
   try {
@@ -31,6 +46,7 @@ coffeeController.post("/:id/edit", async (req, res) => {
     });
   }
 });
+
 coffeeController.get("/:id", async (req, res) => {
   const productId = req.params.id;
   console.log(productId);
@@ -45,6 +61,7 @@ coffeeController.get("/:id", async (req, res) => {
     });
   }
 });
+
 coffeeController.get("/", async (req, res) => {
   try {
     const data = await coffeeService.getAll();
@@ -56,6 +73,7 @@ coffeeController.get("/", async (req, res) => {
     });
   }
 });
+
 coffeeController.post("/", isAuth, async (req, res) => {
   const coffeeData = req.body;
   const userId = req.user;
@@ -72,4 +90,23 @@ coffeeController.post("/", isAuth, async (req, res) => {
   }
 });
 
+async function isOwner(req, res, next) {
+  let product = await coffeeService.getOne(req.params.id);
+
+  if (product.owner == req.user._id) {
+    res.status(404);
+  } else {
+    next();
+  }
+}
+
+async function checkIsOwner(req, res, next) {
+  let product = await coffeeService.getOne(req.params.id);
+
+  if (product.owner == req.user._id) {
+    next();
+  } else {
+    res.status(404);
+  }
+}
 export default coffeeController;

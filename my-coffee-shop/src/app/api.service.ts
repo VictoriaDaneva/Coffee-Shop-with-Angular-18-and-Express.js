@@ -40,6 +40,10 @@ export class ApiService {
     return this.http.post<Product>(`/api/products/${productId}/edit`, payload);
   }
 
+  addToWishlist(productId: string) {
+    return this.http.get<Product>(`/api/products/${productId}/like`);
+  }
+
   deleteProduct(productId: string) {
     return this.http.delete(`/api/products/${productId}`);
   }

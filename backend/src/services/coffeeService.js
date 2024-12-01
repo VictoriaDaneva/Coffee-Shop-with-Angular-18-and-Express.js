@@ -2,29 +2,50 @@ import Product from "../models/product.js";
 import user from "../models/user.js";
 
 const coffeeService = {
-  async removeProduct(productId) {
+  addToWishlistUser(productId, userId) {
+    return user.findByIdAndUpdate(
+      userId,
+      { $push: { wishlist: productId } },
+      { new: true, runValidators: true }
+    );
+  },
+
+  like(productId, userId) {
+    return Product.findByIdAndUpdate(
+      productId,
+      { $push: { likes: userId } },
+      { new: true, runValidators: true }
+    );
+  },
+
+  removeProduct(productId) {
     return Product.findByIdAndDelete(productId);
   },
-  async editProduct(coffeeParams, productId) {
+
+  editProduct(coffeeParams, productId) {
     return Product.findByIdAndUpdate(productId, coffeeParams, {
       runValidators: true,
       new: true,
     });
   },
-  async getOne(productId) {
+
+  getOne(productId) {
     return Product.findById(productId).lean();
   },
-  async getAll() {
+
+  getAll() {
     return Product.find();
   },
-  async addPostToUser(userId, productId) {
+
+  addPostToUser(userId, productId) {
     return user.findByIdAndUpdate(
       userId,
       { $push: { posts: productId } },
       { new: true, runValidators: true }
     );
   },
-  async create(coffeeData, userId) {
+
+  create(coffeeData, userId) {
     return Product.create({ ...coffeeData, owner: userId });
   },
 };

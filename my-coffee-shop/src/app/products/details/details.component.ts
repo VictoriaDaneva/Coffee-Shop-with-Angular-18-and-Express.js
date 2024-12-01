@@ -13,6 +13,10 @@ import { AuthService } from '../../user/auth-service.service';
 })
 export class DetailsComponent implements OnInit {
   product = {} as Product;
+  isOwner = false;
+  isLiked = false;
+  authorUsername = '';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -23,8 +27,11 @@ export class DetailsComponent implements OnInit {
     return this.userService.isLogged;
   }
 
-  get username(): string {
-    return this.userService.user?.username || '';
+  wishlist() {
+    const id = this.route.snapshot.params['id'];
+    this.apiService
+      .addToWishlist(id)
+      .subscribe(() => this.router.navigate([`/coffee/${id}`]));
   }
 
   delete() {
@@ -37,6 +44,13 @@ export class DetailsComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     this.apiService.getSingleProduct(id).subscribe((product) => {
       this.product = product;
+
+      this.authorUsername = product.owner?.username || 'Unknown Author';
+
+      this.isLiked = product.likes.includes(String(this.userService.user?._id));
+
+      this.isOwner =
+        String(product.owner) === String(this.userService.user?._id);
     });
   }
 }
