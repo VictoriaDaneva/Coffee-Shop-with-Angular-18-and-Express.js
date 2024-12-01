@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderComponent } from '../loader/loader.component';
+import { LoaderComponent } from '../shared/loader/loader.component';
 import { RouterLink } from '@angular/router';
 import { Product } from '../types/product';
 import { ApiService } from '../api.service';
+import { SlicePipe } from '../shared/slice.pipe';
 
 @Component({
   selector: 'app-coffee',
   standalone: true,
-  imports: [LoaderComponent, RouterLink],
+  imports: [LoaderComponent, RouterLink, SlicePipe],
   templateUrl: './coffee.component.html',
   styleUrl: './coffee.component.css',
 })
