@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProfileDetails } from '../../types/user';
 import { AuthService } from '../auth-service.service';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, WishlistComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })

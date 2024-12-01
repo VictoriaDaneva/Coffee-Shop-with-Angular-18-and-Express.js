@@ -10,8 +10,11 @@
     <p><strong>Email:</strong> {{ profileDetails.email }}</p>
     <p><strong>Phone Number:</strong> {{ profileDetails.phoneNumber }}</p>
     <p><strong>Address:</strong> {{ profileDetails.address }}<br /></p>
-    <button class="edit-profile-btn">
-      <a [routerLink]="['/profile/edit', profileDetails.id]">Edit Profile</a>
+    <button
+      class="edit-profile-btn"
+      [routerLink]="['/profile/edit', profileDetails.id]"
+    >
+      Edit Profile
     </button>
   </div>
 </div>
@@ -20,29 +23,6 @@
 <section class="recommended-items">
   <h2>Your Wishlist 🍵</h2>
   <div class="product-grid">
-    <article class="product-card">
-      <img
-        src="/peppermint blend.webp"
-        alt="Peppermint Matcha Green Tea"
-        class="product-image"
-      />
-      <h3 class="product-name">Peppermint Matcha</h3>
-      <p class="product-price">€25.00</p>
-      <a routerLink="/product/peppermint-matcha" class="details-link"
-        >See More Details</a
-      >
-    </article>
-    <article class="product-card">
-      <img
-        src="/mocha blend.webp"
-        alt="Holiday Blend Coffee"
-        class="product-image"
-      />
-      <h3 class="product-name">Holiday Blend</h3>
-      <p class="product-price">€24.00</p>
-      <a routerLink="/product/holiday-blend" class="details-link"
-        >See More Details</a
-      >
-    </article>
+    <app-wishlist />
   </div>
 </section>

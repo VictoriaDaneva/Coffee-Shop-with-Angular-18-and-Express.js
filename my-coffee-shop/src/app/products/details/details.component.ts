@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
     this.apiService
       .addToWishlist(id)
-      .subscribe(() => this.router.navigate([`/coffee/${id}`]));
+      .subscribe(() => this.router.navigate([`/coffee`]));
   }
 
   delete() {

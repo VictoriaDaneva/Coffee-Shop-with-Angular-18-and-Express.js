@@ -1,8 +1,12 @@
-import user from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "../lib/jwt.js";
+import user from "../models/user.js";
 
 const authService = {
+  async getWishlist(userId) {
+    const User = await user.findById(userId).populate("wishlist");
+    return User.wishlist;
+  },
   async editProfile(userId, userData) {
     return user.findByIdAndUpdate(userId, userData, {
       runValidators: true,

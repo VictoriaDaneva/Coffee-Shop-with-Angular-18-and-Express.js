@@ -15,7 +15,7 @@ export const authMiddleware = async (req, res, next) => {
     req.isAuthenticated = true;
     return next();
   } catch (err) {
-    //res.clearCookie(AUTH_COOKIE_NAME);
+    res.clearCookie(AUTH_COOKIE_NAME);
     console.log(err);
   }
 };

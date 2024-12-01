@@ -46,4 +46,12 @@ export class ApiService {
   deleteProduct(productId: string) {
     return this.http.delete(`/api/products/${productId}`);
   }
+
+  getWishlist() {
+    return this.http.get<Product[]>(`/api/users/profile/wishlist`);
+  }
+
+  getPosts() {
+    return this.http.get(`/api/users/profile/posts`);
+  }
 }

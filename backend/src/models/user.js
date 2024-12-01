@@ -42,13 +42,13 @@ const userSchema = new Schema({
   wishlist: [
     {
       type: Types.ObjectId,
-      ref: "Wishlist",
+      ref: "Product",
     },
   ],
   posts: [
     {
       type: Types.ObjectId,
-      ref: "Posts",
+      ref: "Post",
     },
   ],
 });

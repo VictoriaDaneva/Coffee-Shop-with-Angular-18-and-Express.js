@@ -14,7 +14,9 @@
 
       <div class="wishlist-actions">
         @if (isLoggedIn) { @if (!isOwner) { @if (isLiked) {
-        <button class="wishlist-button">U have already liked it :3</button>
+        <button class="wishlist-button">
+          Go and see it in your profile :3
+        </button>
         } @else{
         <a (click)="wishlist()">
           <button class="wishlist-button">Wishlist</button> </a
