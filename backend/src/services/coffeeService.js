@@ -18,6 +18,17 @@ const coffeeService = {
     );
   },
 
+  removeFromUserProduct(userId, productId) {
+    return user.findByIdAndUpdate(
+      userId,
+      { $pull: { products: productId } },
+      {
+        runValidators: true,
+        new: true,
+      }
+    );
+  },
+
   removeProduct(productId) {
     return Product.findByIdAndDelete(productId);
   },

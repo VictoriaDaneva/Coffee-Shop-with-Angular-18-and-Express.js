@@ -22,10 +22,12 @@ coffeeController.get("/:id/like", isOwner, async (req, res) => {
 
 coffeeController.delete("/:id", checkIsOwner, async (req, res) => {
   const productId = req.params.id;
+  const userId = req.user._id;
   try {
+    await coffeeService.removeFromUserProduct(userId, productId);
     await coffeeService.removeProduct(productId);
     return res.status(200).json({ message: "Product deleted successfully" });
-  } catch (error) {
+  } catch (err) {
     console.log(getErrrorMessage(err));
     return res.status(400).json({
       error: getErrrorMessage(err),
