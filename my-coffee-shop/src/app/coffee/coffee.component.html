@@ -9,25 +9,26 @@
   } @else {
   <div class="product-grid">
     @for (product of products; track $index) {
-    <article
-      class="product-card"
-      itemscope
-      itemtype="https://schema.org/Product"
-    >
-      <img [src]="product.imageUrl" class="product-image" itemprop="image" />
-      <div class="product-details">
-        <h2 class="product-name" itemprop="name">{{ product.title }}</h2>
-        <p class="product-price">€{{ product.price }}</p>
-        <p class="product-description" itemprop="description">
-          {{ product.description | slice : 40 }}
-        </p>
-        <a [routerLink]="['/coffee/', product._id]">
+    <a [routerLink]="['/coffee/', product._id]">
+      <article
+        class="product-card"
+        itemscope
+        itemtype="https://schema.org/Product"
+      >
+        <img [src]="product.imageUrl" class="product-image" itemprop="image" />
+        <div class="product-details">
+          <h2 class="product-name" itemprop="name">{{ product.title }}</h2>
+          <p class="product-price">€{{ product.price }}</p>
+          <p class="product-description" itemprop="description">
+            {{ product.description | slice : 40 }}
+          </p>
+
           <button class="details-button" aria-label="See more details">
             See More Details
           </button>
-        </a>
-      </div>
-    </article>
+        </div>
+      </article>
+    </a>
     }
   </div>
   }

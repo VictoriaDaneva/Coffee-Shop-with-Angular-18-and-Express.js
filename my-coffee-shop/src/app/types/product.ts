@@ -6,9 +6,17 @@ export interface Product {
   title: string;
   price: string;
   type: string;
-  author: string;
   description: string;
   likes: string[];
   owner: User;
   _v: string;
+}
+
+export interface ProductDetails {
+  id: string;
+  imageUrl: string;
+  title: string;
+  price: string;
+  type: string;
+  description: string;
 }

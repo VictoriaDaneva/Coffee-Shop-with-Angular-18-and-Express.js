@@ -21,10 +21,10 @@ export class CreateComponent {
       this.errorMessage = 'Please fill in all required fields.';
       return;
     }
-    const { imageUrl, title, price, type, author, description } = form.value;
+    const { imageUrl, title, price, type, description } = form.value;
 
     this.apiService
-      .createProduct(imageUrl, title, price, type, author, description)
+      .createProduct(imageUrl, title, price, type, description)
       .subscribe(() => {
         this.router.navigate(['/coffee']);
       });

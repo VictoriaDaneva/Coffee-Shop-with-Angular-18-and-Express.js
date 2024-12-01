@@ -6,7 +6,7 @@
       id="image-url"
       name="imageUrl"
       placeholder="Image URL"
-      ngModel
+      [(ngModel)]="productDetails.imageUrl"
       #imageUrlInput="ngModel"
       required
     />
@@ -18,7 +18,7 @@
       id="title"
       name="title"
       placeholder="Product Title"
-      ngModel
+      [(ngModel)]="productDetails.title"
       #titleInput="ngModel"
       required
     />
@@ -31,7 +31,8 @@
       name="price"
       placeholder="Price"
       step="0.01"
-      ngModel
+      min="5"
+      [(ngModel)]="productDetails.price"
       #priceInput="ngModel"
       required
     />
@@ -43,7 +44,7 @@
       id="type"
       name="type"
       placeholder="Product Type"
-      ngModel
+      [(ngModel)]="productDetails.type"
       #typeInput="ngModel"
       required
     />
@@ -55,7 +56,7 @@
       name="description"
       placeholder="Description"
       rows="3"
-      ngModel
+      [(ngModel)]="productDetails.description"
       #descriptionInput="ngModel"
       required
     ></textarea>
@@ -64,8 +65,13 @@
     }
     <div class="button-group">
       <button type="submit">Save Changes</button>
-      <a [routerLink]="['/coffee']"></a>
-      <button type="button" class="cancel-btn">Cancel</button>
+      <button
+        type="button"
+        class="cancel-btn"
+        [routerLink]="['/coffee', productDetails.id]"
+      >
+        Cancel
+      </button>
     </div>
   </form>
 </div>

@@ -11,18 +11,56 @@ import { FormsModule, NgForm } from '@angular/forms';
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css',
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit {
   errorMessage: string = '';
+  profileDetails: ProfileDetails = {
+    id: '',
+    imageUrl: '',
+    username: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
+  };
   constructor(private userService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.userService.getProfile().subscribe({
+      next: (user) => {
+        if (user) {
+          const {
+            _id: id,
+            imageUrl = '',
+            username,
+            email,
+            phoneNumber = '',
+            address = '',
+          } = user;
+
+          this.profileDetails = {
+            id,
+            imageUrl,
+            username,
+            email,
+            phoneNumber,
+            address,
+          };
+        }
+      },
+      error: (err) => {
+        console.error('Failed to load profile:', err);
+      },
+    });
+  }
   onSubmit(form: NgForm): void {
     if (form.invalid) {
       this.errorMessage = 'Please fill in all required fields.';
       return;
     }
-    const { imageUrl, name, email, phoneNumber, address } = form.value;
+    const { imageUrl, username, email, phoneNumber, address } =
+      this.profileDetails;
 
     this.userService
-      .updateProfile(imageUrl, name, email, phoneNumber, address)
+      .updateProfile(imageUrl, username, email, phoneNumber, address)
       .subscribe(() => {
         this.router.navigate(['/profile']);
       });

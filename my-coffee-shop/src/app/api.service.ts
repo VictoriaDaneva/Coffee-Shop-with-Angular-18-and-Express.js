@@ -21,10 +21,9 @@ export class ApiService {
     title: string,
     price: string,
     type: string,
-    author: string,
     description: string
   ) {
-    const payload = { imageUrl, title, price, type, author, description };
+    const payload = { imageUrl, title, price, type, description };
     return this.http.post(`/api/products`, payload);
   }
 

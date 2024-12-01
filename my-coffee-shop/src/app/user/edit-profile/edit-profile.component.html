@@ -5,74 +5,72 @@
       type="text"
       id="imageUrl"
       name="imageUrl"
-      placeholder="image"
-      value="image"
-      ngModel
+      placeholder="Image URL"
+      [(ngModel)]="profileDetails.imageUrl"
       #imageUrlInput="ngModel"
       required
     />
     @if (imageUrlInput.invalid && imageUrlInput.touched) {
-    <div class="error">The image is requered!!.</div>
+    <div class="error">The image URL is required!</div>
     }
+
     <input
       type="text"
-      id="name"
-      name="name"
+      id="username"
+      name="username"
       placeholder="Name"
-      value="User Name"
-      ngModel
+      [(ngModel)]="profileDetails.username"
       #nameInput="ngModel"
       required
     />
     @if (nameInput.invalid && nameInput.touched) {
-    <div class="error">Name is requered!!.</div>
+    <div class="error">Name is required!</div>
     }
+
     <input
       type="email"
       id="email"
       name="email"
       placeholder="Email"
-      value="mail@expaytech.co"
-      ngModel
+      [(ngModel)]="profileDetails.email"
       #emailInput="ngModel"
       required
     />
     @if (emailInput.invalid && emailInput.touched) {
-    <div class="error">Email is requered!!.</div>
+    <div class="error">Email is required!</div>
     }
+
     <input
       type="tel"
-      id="phone"
+      id="phoneNumber"
       name="phoneNumber"
       placeholder="Phone Number"
-      value="+20 01274318900"
-      ngModel
+      [(ngModel)]="profileDetails.phoneNumber"
       #phoneNumberInput="ngModel"
       required
     />
     @if (phoneNumberInput.invalid && phoneNumberInput.touched) {
-    <div class="error">Phone number is requered!!.</div>
+    <div class="error">Phone number is required!</div>
     }
+
     <textarea
       id="address"
       name="address"
       placeholder="Address"
       rows="3"
-      ngModel
+      [(ngModel)]="profileDetails.address"
       #addressInput="ngModel"
       required
     ></textarea>
     @if (addressInput.invalid && addressInput.touched) {
-    <div class="error">Address is requered!!.</div>
-    }
-    <!-- Error Message -->
-    @if (errorMessage) {
+    <div class="error">Address is required!</div>
+    } @if (errorMessage) {
     <p class="error">{{ errorMessage }}</p>
     }
 
     <button type="submit" [disabled]="form.invalid">Save Changes</button>
-    <button type="button" class="cancel-btn">
-      <a routerLink="/profile">Cancel</a>
-    </button>
+    <a routerLink="/profile">
+      <button type="button" class="cancel-btn">Cancel</button>
+    </a>
   </form>
 </div>

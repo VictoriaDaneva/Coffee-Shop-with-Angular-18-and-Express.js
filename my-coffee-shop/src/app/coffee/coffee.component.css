@@ -87,3 +87,7 @@
 .details-button:hover {
   background: #335ab6;
 }
+
+a {
+  text-decoration: none;
+}

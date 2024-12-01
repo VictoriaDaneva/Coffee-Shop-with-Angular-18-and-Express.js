@@ -17,10 +17,6 @@ const productSchema = new Schema({
     type: String,
     required: [true, "The product type is requered!!"],
   },
-  author: {
-    type: String,
-    required: [true, "Author is requered!!"],
-  },
   description: {
     type: String,
     required: [true, "Description is requered!!"],

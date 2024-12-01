@@ -87,3 +87,6 @@ footer a:hover {
 .cancel-btn:hover {
   background: #a32424;
 }
+a {
+  text-decoration: none;
+}
