@@ -1,6 +1,19 @@
 <nav>
   <div class="logo">The Coffee-Shop</div>
   <div class="menu">
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search..."
+        [@expandCollapse]="isSearchExpanded ? 'expanded' : 'collapsed'"
+        (focus)="onSearchFocus()"
+        (blur)="onSearchBlur()"
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()"
+      />
+      <div class="search-icon"></div>
+    </div>
     <a class="item" routerLink="/home">Home</a>
     <a class="item" routerLink="/coffee">Coffee</a>
     @if(isLoggedIn){
@@ -11,18 +24,5 @@
     <a class="item" routerLink="/register">Register</a>
     <a class="item" routerLink="/login">Login</a>
     }
-    <div
-      class="search-container"
-      [@toggleSearch]="isSearchActive ? 'open' : 'closed'"
-    >
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Search..."
-        [(ngModel)]="searchQuery"
-        (input)="onSearch()"
-      />
-      <div class="search-icon" (click)="toggleSearch()"></div>
-    </div>
   </div>
 </nav>

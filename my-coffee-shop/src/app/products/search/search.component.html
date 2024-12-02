@@ -1,5 +1,7 @@
 <div class="search-page">
-  <h2>Search Results for "{{ query }}"</h2>
+  <header>
+    <h2>Search Results for "{{ query }}"</h2>
+  </header>
 
   @if (isLoading ) {
   <app-loader />
@@ -7,15 +9,29 @@
 
   <div>No results found</div>
   } @if (searchProducts.length > 0) {
-  <div class="results">
+
+  <div class="product-grid">
     @for (product of searchProducts; track $index) {
-    <a [routerLink]="['/coffee', product._id]"></a>
-    <div class="product-card">
-      <h3>{{ product.title }}</h3>
-      <img [src]="product.imageUrl" alt="{{ product.title }}" />
-      <p>{{ product.description }}</p>
-      <p>Price: ${{ product.price }}</p>
-    </div>
+    <a [routerLink]="['/coffee/', product._id]">
+      <article
+        class="product-card"
+        itemscope
+        itemtype="https://schema.org/Product"
+      >
+        <img [src]="product.imageUrl" class="product-image" itemprop="image" />
+        <div class="product-details">
+          <h2 class="product-name" itemprop="name">{{ product.title }}</h2>
+          <p class="product-price">€{{ product.price }}</p>
+          <p class="product-description" itemprop="description">
+            {{ product.description | slice : 40 }}
+          </p>
+
+          <button class="details-button" aria-label="See more details">
+            See More Details
+          </button>
+        </div>
+      </article>
+    </a>
     }
   </div>
   }

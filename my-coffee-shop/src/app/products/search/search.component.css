@@ -1,23 +1,88 @@
 .search-page {
-  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 20px;
+  background: #f9f9f9;
 }
 
-.results {
+.search-page header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-page h1 {
+  font-size: 2rem;
+  color: #183371;
+}
+
+.product-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
+  justify-content: flex-start; /* or 'center', depending on alignment preference */
 }
 
 .product-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  width: 200px;
+  flex: 1 1 calc(33.333% - 40px); /* Allow three cards per row, adjust for gap */
+  box-sizing: border-box; /* Ensure padding and borders are included in width */
+  max-width: 300px; /* Prevent cards from growing too large */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .product-card img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.product-details {
+  margin-top: 10px;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #183371;
+  margin: 10px 0;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  color: #3a85b4;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 10px 0;
+  margin-bottom: 35px;
+}
+
+.details-button {
+  background-color: #183371;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.details-button:hover {
+  background: #335ab6;
+}
+
+a {
+  text-decoration: none;
 }

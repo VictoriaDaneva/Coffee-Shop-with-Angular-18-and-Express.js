@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from './types/product';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -57,5 +58,8 @@ export class ApiService {
 
   search(query: string) {
     return this.http.get<Product[]>(`/api/products/search?q=${query}`);
+  }
+  getLastThreePosts() {
+    return this.getPosts().pipe(map((posts) => posts.slice(-3)));
   }
 }

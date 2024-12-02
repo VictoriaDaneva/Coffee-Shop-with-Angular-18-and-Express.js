@@ -86,7 +86,7 @@ nav .menu {
 .search-icon {
   width: 20px;
   height: 20px;
-  background-image: url("https://cdn-icons-png.flaticon.com/512/622/622669.png"); /* Replace with your icon */
+  background-image: url("https://cdn-icons-png.flaticon.com/512/622/622669.png");
   background-size: cover;
   cursor: pointer;
 }

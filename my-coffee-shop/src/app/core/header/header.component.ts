@@ -17,29 +17,16 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   animations: [
-    trigger('toggleSearch', [
-      state(
-        'closed',
-        style({
-          width: '0px',
-          opacity: 0,
-          visibility: 'hidden',
-        })
-      ),
-      state(
-        'open',
-        style({
-          width: '200px',
-          opacity: 1,
-          visibility: 'visible',
-        })
-      ),
-      transition('closed <=> open', [animate('0.3s ease-in-out')]),
+    trigger('expandCollapse', [
+      state('expanded', style({ width: '300px' })),
+      state('collapsed', style({ width: '0px' })),
+      transition('collapsed <=> expanded', [animate('300ms ease-in-out')]),
     ]),
   ],
 })
 export class HeaderComponent {
   searchQuery: string = '';
+  isSearchExpanded = false;
   isSearchActive: boolean = false;
 
   get isLoggedIn(): boolean {
@@ -48,8 +35,12 @@ export class HeaderComponent {
 
   constructor(private userService: AuthService, private router: Router) {}
 
-  toggleSearch() {
-    this.isSearchActive = !this.isSearchActive;
+  onSearchFocus() {
+    this.isSearchExpanded = true;
+  }
+
+  onSearchBlur() {
+    this.isSearchExpanded = false;
   }
 
   onSearch() {

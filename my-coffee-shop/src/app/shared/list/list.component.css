@@ -1,0 +1,89 @@
+.recommended-section {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.recommended-heading {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #183371;
+}
+
+.recommended-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Center the cards in the row */
+}
+
+.recommended-card {
+  flex: 1 1 calc(25% - 40px); /* 4 cards per row */
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recommended-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.recommended-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.recommended-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #183371;
+  margin-bottom: 10px;
+}
+
+.recommended-price {
+  font-size: 1rem;
+  color: #305bc0;
+  margin-bottom: 15px;
+}
+
+.wishlist-button {
+  background-color: #183371;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.wishlist-button:hover {
+  background-color: #335ab6;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .recommended-card {
+    flex: 1 1 calc(33.333% - 40px); /* 3 cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .recommended-card {
+    flex: 1 1 calc(50% - 40px); /* 2 cards per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .recommended-card {
+    flex: 1 1 100%; /* 1 card per row */
+  }
+}

@@ -24,13 +24,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; /* or 'center', depending on alignment preference */
+  justify-content: center; /* Ensures the grid is centered */
 }
 
 .product-card {
-  flex: 1 1 calc(33.333% - 40px); /* Allow three cards per row, adjust for gap */
-  box-sizing: border-box; /* Ensure padding and borders are included in width */
-  max-width: 300px; /* Prevent cards from growing too large */
+  flex: 1 1 calc(25% - 40px); /* Each card takes up 25% of the row, minus the gap */
+  max-width: 300px; /* Prevent cards from becoming too large */
+  box-sizing: border-box; /* Includes padding/borders in width calculation */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -50,7 +50,6 @@
   border-radius: 10px;
   margin-bottom: 15px;
 }
-
 .product-details {
   margin-top: 10px;
 }
@@ -90,4 +89,22 @@
 
 a {
   text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  .product-card {
+    flex: 1 1 calc(33.333% - 40px); /* 3 cards per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex: 1 1 calc(50% - 40px); /* 2 cards per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    flex: 1 1 100%; /* 1 card per row on very small screens */
+  }
 }
