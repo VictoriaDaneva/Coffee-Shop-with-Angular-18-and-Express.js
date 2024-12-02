@@ -2,6 +2,9 @@ import Product from "../models/product.js";
 import user from "../models/user.js";
 
 const coffeeService = {
+  search(query) {
+    return Product.find({ title: { $regex: query, $options: "i" } });
+  },
   addToWishlistUser(productId, userId) {
     return user.findByIdAndUpdate(
       userId,

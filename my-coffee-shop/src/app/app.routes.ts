@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { DetailsComponent } from './products/details/details.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
+import { SearchComponent } from './products/search/search.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/edit/:id', component: EditProfileComponent },
 
+  { path: 'search', component: SearchComponent },
   { path: 'create', component: CreateComponent },
   { path: 'coffee', component: CoffeeComponent },
   { path: 'coffee/:id', component: DetailsComponent },

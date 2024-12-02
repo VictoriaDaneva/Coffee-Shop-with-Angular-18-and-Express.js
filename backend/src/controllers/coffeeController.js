@@ -5,6 +5,17 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
 
+coffeeController.get("/search", async (req, res) => {
+  const query = req.query.q;
+
+  try {
+    const search = await coffeeService.search(query);
+    res.status(200).json(search);
+  } catch (err) {
+    return res.status(400).json({ error: "Query parameter is required" });
+  }
+});
+
 coffeeController.get("/:id/like", isOwner, async (req, res) => {
   const productId = req.params.id;
   const userId = req.user._id;

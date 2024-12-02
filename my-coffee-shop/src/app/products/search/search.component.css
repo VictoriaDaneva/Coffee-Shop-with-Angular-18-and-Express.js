@@ -1,0 +1,23 @@
+.search-page {
+  padding: 20px;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

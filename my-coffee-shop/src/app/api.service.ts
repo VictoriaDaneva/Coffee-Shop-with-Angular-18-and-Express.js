@@ -54,4 +54,8 @@ export class ApiService {
   getPosts() {
     return this.http.get<Product[]>(`/api/users/profile/posts`);
   }
+
+  search(query: string) {
+    return this.http.get<Product[]>(`/api/products/search?q=${query}`);
+  }
 }
