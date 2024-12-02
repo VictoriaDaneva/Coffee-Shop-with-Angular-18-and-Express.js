@@ -64,3 +64,37 @@ nav .menu {
     padding: 10px 0;
   }
 }
+.search-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+.search-input {
+  height: 30px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+  font-size: 14px;
+  background-color: #fff;
+  color: #183371;
+  margin-right: 10px;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url("https://cdn-icons-png.flaticon.com/512/622/622669.png"); /* Replace with your icon */
+  background-size: cover;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

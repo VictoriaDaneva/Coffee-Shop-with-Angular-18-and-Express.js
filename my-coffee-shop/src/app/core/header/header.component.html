@@ -11,5 +11,18 @@
     <a class="item" routerLink="/register">Register</a>
     <a class="item" routerLink="/login">Login</a>
     }
+    <div
+      class="search-container"
+      [@toggleSearch]="isSearchActive ? 'open' : 'closed'"
+    >
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search..."
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()"
+      />
+      <div class="search-icon" (click)="toggleSearch()"></div>
+    </div>
   </div>
 </nav>

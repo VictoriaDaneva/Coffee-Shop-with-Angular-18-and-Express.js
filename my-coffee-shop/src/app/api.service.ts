@@ -52,6 +52,6 @@ export class ApiService {
   }
 
   getPosts() {
-    return this.http.get(`/api/users/profile/posts`);
+    return this.http.get<Product[]>(`/api/users/profile/posts`);
   }
 }

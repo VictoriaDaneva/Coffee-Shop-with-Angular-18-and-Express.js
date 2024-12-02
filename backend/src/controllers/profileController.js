@@ -10,6 +10,17 @@ import {
 
 const profileController = Router();
 
+profileController.get("/posts", isAuth, async (req, res) => {
+  const userId = req.user._id;
+  try {
+    const user = await authService.getPosts(userId);
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 profileController.get("/wishlist", isAuth, async (req, res) => {
   const userId = req.user._id;
   try {

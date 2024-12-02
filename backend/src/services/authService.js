@@ -3,6 +3,10 @@ import jwt from "../lib/jwt.js";
 import user from "../models/user.js";
 
 const authService = {
+  async getPosts(userId) {
+    const User = await user.findById(userId).populate("posts");
+    return User.posts;
+  },
   async getWishlist(userId) {
     const User = await user.findById(userId).populate("wishlist");
     return User.wishlist;
