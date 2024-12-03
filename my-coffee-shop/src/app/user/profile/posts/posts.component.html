@@ -1,12 +1,17 @@
-@for (product of products; track $index) {
-<a [routerLink]="['/coffee', product._id]">
-  <article class="product-card">
-    <img [src]="product.imageUrl" class="product-image" />
-    <h3 class="product-name">{{ product.title }}</h3>
-    <p class="product-price">€{{ product.price }}</p>
-    <a [routerLink]="['/coffee', product._id]" class="details-link"
-      >See More Details</a
-    >
-  </article>
-</a>
-}
+<section class="recommended-items">
+  <h2>Your Posts 🍵</h2>
+  <div class="product-grid">
+    @for (product of products; track $index) {
+    <a [routerLink]="['/coffee', product._id]">
+      <article class="product-card">
+        <img [src]="product.imageUrl" class="product-image" />
+        <h3 class="product-name">{{ product.title }}</h3>
+        <p class="product-price">€{{ product.price }}</p>
+        <a [routerLink]="['/coffee', product._id]" class="details-link"
+          >See More Details</a
+        >
+      </article>
+    </a>
+    }
+  </div>
+</section>

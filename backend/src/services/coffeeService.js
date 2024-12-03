@@ -22,7 +22,7 @@ const coffeeService = {
   },
 
   removeFromUserProduct(userId, productId) {
-    return user.findByIdAndUpdate(
+    return user.findByIdAndDelete(
       userId,
       { $pull: { products: productId } },
       {

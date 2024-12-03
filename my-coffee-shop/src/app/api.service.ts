@@ -60,6 +60,9 @@ export class ApiService {
     return this.http.get<Product[]>(`/api/products/search?q=${query}`);
   }
   getLastThreePosts() {
-    return this.getPosts().pipe(map((posts) => posts.slice(-3)));
+    return this.getProducts().pipe(map((posts) => posts.slice(-3)));
+  }
+  getLastFivePosts() {
+    return this.getProducts().pipe(map((posts) => posts.slice(-5)));
   }
 }

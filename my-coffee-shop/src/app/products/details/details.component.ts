@@ -3,11 +3,12 @@ import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { Product } from '../../types/product';
 import { AuthService } from '../../user/auth-service.service';
+import { ListComponent } from '../../shared/list/list.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ListComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })

@@ -6,9 +6,6 @@
         type="text"
         class="search-input"
         placeholder="Search..."
-        [@expandCollapse]="isSearchExpanded ? 'expanded' : 'collapsed'"
-        (focus)="onSearchFocus()"
-        (blur)="onSearchBlur()"
         [(ngModel)]="searchQuery"
         (input)="onSearch()"
       />
