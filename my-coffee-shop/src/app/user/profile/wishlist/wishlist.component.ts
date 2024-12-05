@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../../types/product';
 import { ApiService } from '../../../api.service';
+import { SlicePipe } from '../../../shared/slice.pipe';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, SlicePipe],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })

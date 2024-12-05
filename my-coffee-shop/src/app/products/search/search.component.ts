@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product } from '../../types/product';
 import { ApiService } from '../../api.service';
 import { LoaderComponent } from '../../shared/loader/loader.component';
-import { SlicePipe } from '../../shared/pipes/slice.pipe';
+import { SlicePipe } from '../../shared/slice.pipe';
 
 @Component({
   selector: 'app-search',
