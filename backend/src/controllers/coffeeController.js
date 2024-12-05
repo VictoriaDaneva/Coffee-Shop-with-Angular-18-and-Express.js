@@ -5,6 +5,7 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const coffeeController = Router();
 
+//Search
 coffeeController.get("/search", async (req, res) => {
   const query = req.query.q;
 
@@ -12,10 +13,12 @@ coffeeController.get("/search", async (req, res) => {
     const search = await coffeeService.search(query);
     res.status(200).json(search);
   } catch (err) {
-    return res.status(400).json({ message: "Query parameter is required" });
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
   }
 });
 
+//Add to wishlist
 coffeeController.get("/:id/like", isOwner, async (req, res) => {
   const productId = req.params.id;
   const userId = req.user._id;
@@ -24,13 +27,12 @@ coffeeController.get("/:id/like", isOwner, async (req, res) => {
     await coffeeService.addToWishlistUser(productId, userId);
     res.status(200).json({ message: "Product is liked successfully" });
   } catch (err) {
-    console.log(err);
-    return res.status(400).json({
-      message: getErrrorMessage(err),
-    });
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
   }
 });
 
+//Delete a post
 coffeeController.delete("/:id", checkIsOwner, async (req, res) => {
   const productId = req.params.id;
   const userId = req.user._id;
@@ -39,13 +41,12 @@ coffeeController.delete("/:id", checkIsOwner, async (req, res) => {
     await coffeeService.removeProduct(productId);
     return res.status(200).json({ message: "Product deleted successfully" });
   } catch (err) {
-    console.log(getErrrorMessage(err));
-    return res.status(400).json({
-      message: getErrrorMessage(err),
-    });
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
   }
 });
 
+//Edit a post
 coffeeController.post("/:id/edit", checkIsOwner, async (req, res) => {
   const productId = req.params.id;
   const coffeeParams = req.body;
@@ -53,13 +54,12 @@ coffeeController.post("/:id/edit", checkIsOwner, async (req, res) => {
     const data = await coffeeService.editProduct(coffeeParams, productId);
     return res.json(data);
   } catch (err) {
-    console.log(getErrrorMessage(err));
-    return res.status(400).json({
-      message: getErrrorMessage(err),
-    });
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
   }
 });
 
+//Details
 coffeeController.get("/:id", async (req, res) => {
   const productId = req.params.id;
   console.log(productId);
@@ -75,6 +75,7 @@ coffeeController.get("/:id", async (req, res) => {
   }
 });
 
+//Catalog
 coffeeController.get("/", async (req, res) => {
   try {
     const data = await coffeeService.getAll();
@@ -87,6 +88,7 @@ coffeeController.get("/", async (req, res) => {
   }
 });
 
+//Post a product
 coffeeController.post("/", isAuth, async (req, res) => {
   const coffeeData = req.body;
   const userId = req.user;

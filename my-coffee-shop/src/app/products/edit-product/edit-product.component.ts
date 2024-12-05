@@ -51,8 +51,8 @@ export class EditProductComponent implements OnInit {
           };
         }
       },
-      error: (err) => {
-        console.error('Failed to load product:', err);
+      error: (error) => {
+        this.errorMessage = error;
       },
     });
   }

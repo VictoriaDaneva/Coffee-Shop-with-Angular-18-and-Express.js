@@ -80,5 +80,10 @@
         <a routerLink="/coffee">Cancel</a>
       </button>
     </div>
+
+    <!-- Error Message -->
+    @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+    }
   </form>
 </div>

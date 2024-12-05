@@ -13,6 +13,7 @@ import { SlicePipe } from '../../shared/pipes/slice.pipe';
   styleUrl: './search.component.css',
 })
 export class SearchComponent implements OnInit {
+  errorMessage: string = '';
   searchProducts: Product[] = [];
   query: string = '';
   isLoading = true;
@@ -23,9 +24,14 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.query = params['q'];
       if (this.query) {
-        this.apiService.search(this.query).subscribe((result) => {
-          this.searchProducts = result;
-          this.isLoading = false;
+        this.apiService.search(this.query).subscribe({
+          next: (result) => {
+            this.searchProducts = result;
+            this.isLoading = false;
+          },
+          error: (error) => {
+            this.errorMessage = error;
+          },
         });
       } else {
         this.isLoading = false;

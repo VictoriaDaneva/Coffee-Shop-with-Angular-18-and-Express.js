@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from './types/product';
-import { map } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,9 @@ export class ApiService {
     description: string
   ) {
     const payload = { imageUrl, title, price, type, description };
-    return this.http.post(`/api/products`, payload);
+    return this.http
+      .post(`/api/products`, payload)
+      .pipe(catchError((error) => this.getError(error)));
   }
 
   updateProduct(
@@ -37,7 +39,9 @@ export class ApiService {
     description: string
   ) {
     const payload = { productId, imageUrl, title, price, type, description };
-    return this.http.post<Product>(`/api/products/${productId}/edit`, payload);
+    return this.http
+      .post<Product>(`/api/products/${productId}/edit`, payload)
+      .pipe(catchError((error) => this.getError(error)));
   }
 
   addToWishlist(productId: string) {
@@ -57,9 +61,17 @@ export class ApiService {
   }
 
   search(query: string) {
-    return this.http.get<Product[]>(`/api/products/search?q=${query}`);
+    return this.http
+      .get<Product[]>(`/api/products/search?q=${query}`)
+      .pipe(catchError((error) => this.getError(error)));
   }
   getLastThreePosts() {
     return this.getProducts().pipe(map((posts) => posts.slice(-3)));
+  }
+
+  private getError(error: any) {
+    const errorMessage =
+      error.error?.message || 'An unknown error occurred. Please try again.';
+    return throwError(() => errorMessage);
   }
 }

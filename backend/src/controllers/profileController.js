@@ -1,15 +1,11 @@
 import { Router } from "express";
 import authService from "../services/authService.js";
-import { AUTH_COOKIE_NAME } from "../constants.js";
 import { getErrrorMessage } from "../utils/errorUtils.js";
-import {
-  authMiddleware,
-  isAuth,
-  isGuest,
-} from "../middleware/authMiddleware.js";
+import { authMiddleware, isAuth } from "../middleware/authMiddleware.js";
 
 const profileController = Router();
 
+//get the user's posts
 profileController.get("/posts", isAuth, async (req, res) => {
   const userId = req.user._id;
   try {
@@ -17,10 +13,11 @@ profileController.get("/posts", isAuth, async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     console.error(err.message);
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
+//get the user's wishlist
 profileController.get("/wishlist", isAuth, async (req, res) => {
   const userId = req.user._id;
   try {
@@ -28,7 +25,7 @@ profileController.get("/wishlist", isAuth, async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     console.error(err.message);
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -38,12 +35,12 @@ profileController.get("/", authMiddleware, async (req, res) => {
   try {
     const data = await authService.getProfile(userId);
     if (!data) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
-    return res.status(200).json(data); // Return the profile data directly
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err.message);
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -56,7 +53,8 @@ profileController.post("/edit", isAuth, async (req, res) => {
     return res.status(200).json(data);
   } catch (err) {
     console.error(err.message);
-    return res.status(500).json({ error: "Internal server error" });
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
   }
 });
 

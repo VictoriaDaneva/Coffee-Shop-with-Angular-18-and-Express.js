@@ -25,8 +25,13 @@ export class CreateComponent {
 
     this.apiService
       .createProduct(imageUrl, title, price, type, description)
-      .subscribe(() => {
-        this.router.navigate(['/coffee']);
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/coffee']);
+        },
+        error: (error) => {
+          this.errorMessage = error;
+        },
       });
   }
 }

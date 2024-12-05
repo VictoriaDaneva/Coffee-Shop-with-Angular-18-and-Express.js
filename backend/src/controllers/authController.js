@@ -2,7 +2,7 @@ import { Router } from "express";
 import authService from "../services/authService.js";
 import { AUTH_COOKIE_NAME } from "../constants.js";
 import { getErrrorMessage } from "../utils/errorUtils.js";
-import { isAuth, isGuest } from "../middleware/authMiddleware.js";
+import { isGuest } from "../middleware/authMiddleware.js";
 
 const authController = Router();
 
