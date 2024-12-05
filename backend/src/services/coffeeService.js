@@ -5,6 +5,24 @@ const coffeeService = {
   search(query) {
     return Product.find({ title: { $regex: query, $options: "i" } });
   },
+
+  //Wishlist Functionality
+  removeWishlistUser(productId, userId) {
+    return user.findOneAndUpdate(
+      { _id: userId },
+      { $pull: { wishlist: productId } },
+      { runValidators: true, new: true }
+    );
+  },
+
+  unlike(productId, userId) {
+    return Product.findByIdAndUpdate(
+      productId,
+      { $pull: { likes: userId } },
+      { runValidators: true, new: true }
+    );
+  },
+
   addToWishlistUser(productId, userId) {
     return user.findByIdAndUpdate(
       userId,
@@ -20,6 +38,8 @@ const coffeeService = {
       { new: true, runValidators: true }
     );
   },
+
+  //CRUD Operations
 
   removeFromUserProduct(userId, productId) {
     return user.findByIdAndDelete(

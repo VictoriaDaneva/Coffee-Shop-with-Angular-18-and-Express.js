@@ -14,8 +14,8 @@
 
       <div class="wishlist-actions">
         @if (isLoggedIn) { @if (!isOwner) { @if (isLiked) {
-        <button class="wishlist-button">
-          Go and see it in your profile :3
+        <button (click)="unWishlist()" class="wishlist-button">
+          Remove from wishlist :(
         </button>
         } @else{
         <a (click)="wishlist()">

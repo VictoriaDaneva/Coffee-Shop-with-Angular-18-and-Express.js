@@ -18,6 +18,21 @@ coffeeController.get("/search", async (req, res) => {
   }
 });
 
+//Remove from wishlist
+coffeeController.get("/:id/like/unsub", isOwner, async (req, res) => {
+  const productId = req.params.id;
+  const userId = req.user._id;
+
+  try {
+    await coffeeService.unlike(productId, userId);
+    await coffeeService.removeWishlistUser(productId, userId);
+    res.status(200).json({ message: "Product is unliked successfully" });
+  } catch (err) {
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
+  }
+});
+
 //Add to wishlist
 coffeeController.get("/:id/like", isOwner, async (req, res) => {
   const productId = req.params.id;

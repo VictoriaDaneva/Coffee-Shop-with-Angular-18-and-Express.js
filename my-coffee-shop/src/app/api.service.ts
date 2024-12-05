@@ -9,6 +9,8 @@ import { catchError, map, throwError } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
+  //CRUD operations for products
+
   getProducts() {
     return this.http.get<Product[]>(`/api/products`);
   }
@@ -44,13 +46,21 @@ export class ApiService {
       .pipe(catchError((error) => this.getError(error)));
   }
 
+  deleteProduct(productId: string) {
+    return this.http.delete(`/api/products/${productId}`);
+  }
+
+  //Wishlist functionality
+
+  removeFromWishlist(productId: string) {
+    return this.http.get<Product>(`/api/products/${productId}/like/unsub`);
+  }
+
   addToWishlist(productId: string) {
     return this.http.get<Product>(`/api/products/${productId}/like`);
   }
 
-  deleteProduct(productId: string) {
-    return this.http.delete(`/api/products/${productId}`);
-  }
+  //User's lists
 
   getWishlist() {
     return this.http.get<Product[]>(`/api/users/profile/wishlist`);
@@ -60,6 +70,8 @@ export class ApiService {
     return this.http.get<Product[]>(`/api/users/profile/posts`);
   }
 
+  // Search functionality
+
   search(query: string) {
     return this.http
       .get<Product[]>(`/api/products/search?q=${query}`)
@@ -68,6 +80,8 @@ export class ApiService {
   getLastThreePosts() {
     return this.getProducts().pipe(map((posts) => posts.slice(-3)));
   }
+
+  // Error handling
 
   private getError(error: any) {
     const errorMessage =

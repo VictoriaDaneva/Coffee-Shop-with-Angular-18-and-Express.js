@@ -24,8 +24,16 @@ export class DetailsComponent implements OnInit {
     private apiService: ApiService,
     private userService: AuthService
   ) {}
+
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
+  }
+
+  unWishlist() {
+    const id = this.route.snapshot.params['id'];
+    this.apiService
+      .removeFromWishlist(id)
+      .subscribe(() => this.router.navigate([`/coffee`]));
   }
 
   wishlist() {
