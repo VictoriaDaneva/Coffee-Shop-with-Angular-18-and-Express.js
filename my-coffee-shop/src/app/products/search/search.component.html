@@ -6,8 +6,18 @@
   @if (isLoading ) {
   <app-loader />
   } @if(!isLoading && searchProducts.length === 0){
-
-  <div>No results found</div>
+  <div class="no-results">
+    <img
+      src="https://media1.tenor.com/m/9PTGVf4BLwYAAAAC/crying-emoji-dies.gif"
+      alt="No results found"
+      class="no-results-image"
+    />
+    <h3 class="no-results-text">Oops! No results found for "{{ query }}"</h3>
+    <p class="no-results-description">
+      Try searching for something else or browse our catalog.
+    </p>
+    <button class="redirect-button" routerLink="/coffee">Browse Catalog</button>
+  </div>
   } @if (searchProducts.length > 0) {
 
   <div class="product-grid">

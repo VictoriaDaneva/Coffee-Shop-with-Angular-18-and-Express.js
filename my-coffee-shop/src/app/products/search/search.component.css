@@ -92,3 +92,49 @@ a {
   font-size: 0.9rem;
   margin-top: 10px;
 }
+
+/* No Results Section */
+.no-results {
+  text-align: center;
+  padding: 40px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.no-results-image {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.no-results-text {
+  font-size: 1.8rem;
+  color: #183371;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.no-results-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.redirect-button {
+  background-color: #183371;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.redirect-button:hover {
+  background: #335ab6;
+}
