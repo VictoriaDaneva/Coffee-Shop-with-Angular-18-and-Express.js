@@ -1,6 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  Subscription,
+  tap,
+  throwError,
+} from 'rxjs';
 import { UserForAuth } from '../types/user';
 
 @Injectable({
@@ -56,7 +62,8 @@ export class AuthService implements OnDestroy {
         tap((user) => {
           this.user$$.next(user);
           this.getProfile().subscribe();
-        })
+        }),
+        catchError((error) => this.getError(error))
       );
   }
 
@@ -65,7 +72,8 @@ export class AuthService implements OnDestroy {
       tap((user) => {
         this.user$$.next(user);
         this.getProfile().subscribe();
-      })
+      }),
+      catchError((error) => this.getError(error))
     );
   }
 
@@ -96,7 +104,16 @@ export class AuthService implements OnDestroy {
         phoneNumber,
         address,
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      .pipe(
+        tap((user) => this.user$$.next(user)),
+        catchError((error) => this.getError(error))
+      );
+  }
+
+  private getError(error: any) {
+    const errorMessage =
+      error.error?.message || 'An unknown error occurred. Please try again.';
+    return throwError(() => errorMessage);
   }
 
   ngOnDestroy(): void {

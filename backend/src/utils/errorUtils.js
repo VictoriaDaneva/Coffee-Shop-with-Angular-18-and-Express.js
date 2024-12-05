@@ -1,8 +1,9 @@
 export const getErrrorMessage = (err) => {
-  switch (err.name) {
-    case "ValidationError":
-      return Object.values(err.errors).at(0);
-    default:
-      return err.message;
+  if (err.name === "ValidationError") {
+    const validationErrors = Object.values(err.errors);
+    return validationErrors.length > 0
+      ? validationErrors[0].message
+      : "Validation error";
   }
+  return err.message || "An unexpected error occurred.";
 };

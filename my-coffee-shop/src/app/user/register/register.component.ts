@@ -47,8 +47,13 @@ export class RegisterComponent {
         password,
         rePassword
       )
-      .subscribe(() => {
-        this.router.navigate(['/home']);
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          this.errorMessage = error;
+        },
       });
   }
 }

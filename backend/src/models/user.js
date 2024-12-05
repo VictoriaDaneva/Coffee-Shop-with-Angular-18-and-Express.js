@@ -13,12 +13,10 @@ const userSchema = new Schema({
     required: [true, "Username is required!"],
     unique: true,
     minlength: [5, "Username must be at least 5 characters long!"],
-    validate: {
-      validator: function (v) {
-        return /^[a-zA-Z0-9]+$/g.test(v);
-      },
-      message: "Username must contain only Latin letters and digits!",
-    },
+    match: [
+      /^[a-zA-Z0-9]+$/g,
+      "Username must contain only Latin letters and digits!",
+    ],
   },
   email: {
     type: String,

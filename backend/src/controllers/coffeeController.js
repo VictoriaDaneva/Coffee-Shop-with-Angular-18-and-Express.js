@@ -12,7 +12,7 @@ coffeeController.get("/search", async (req, res) => {
     const search = await coffeeService.search(query);
     res.status(200).json(search);
   } catch (err) {
-    return res.status(400).json({ error: "Query parameter is required" });
+    return res.status(400).json({ message: "Query parameter is required" });
   }
 });
 
@@ -26,7 +26,7 @@ coffeeController.get("/:id/like", isOwner, async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      error: getErrrorMessage(err),
+      message: getErrrorMessage(err),
     });
   }
 });
@@ -41,7 +41,7 @@ coffeeController.delete("/:id", checkIsOwner, async (req, res) => {
   } catch (err) {
     console.log(getErrrorMessage(err));
     return res.status(400).json({
-      error: getErrrorMessage(err),
+      message: getErrrorMessage(err),
     });
   }
 });
@@ -55,7 +55,7 @@ coffeeController.post("/:id/edit", checkIsOwner, async (req, res) => {
   } catch (err) {
     console.log(getErrrorMessage(err));
     return res.status(400).json({
-      error: getErrrorMessage(err),
+      message: getErrrorMessage(err),
     });
   }
 });
@@ -70,7 +70,7 @@ coffeeController.get("/:id", async (req, res) => {
   } catch (err) {
     console.log(getErrrorMessage(err));
     return res.status(400).json({
-      error: getErrrorMessage(err),
+      message: getErrrorMessage(err),
     });
   }
 });
@@ -82,7 +82,7 @@ coffeeController.get("/", async (req, res) => {
   } catch (err) {
     console.error(getErrrorMessage(err));
     return res.status(400).json({
-      error: getErrrorMessage(err),
+      message: getErrrorMessage(err),
     });
   }
 });
@@ -98,7 +98,7 @@ coffeeController.post("/", isAuth, async (req, res) => {
   } catch (err) {
     console.error(err.message);
     return res.status(500).json({
-      error: "Internal server error",
+      message: "Internal server error",
     });
   }
 });

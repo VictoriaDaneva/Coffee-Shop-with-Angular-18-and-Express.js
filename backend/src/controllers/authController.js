@@ -34,8 +34,8 @@ authController.post("/register", isGuest, async (req, res) => {
     });
     return res.status(201).json({ User, token });
   } catch (err) {
-    console.error(err.message);
-    return res.status(400).json({ error: getErrrorMessage(err) });
+    const error = getErrrorMessage(err);
+    return res.status(400).json({ message: error });
   }
 });
 
@@ -54,7 +54,8 @@ authController.post("/login", isGuest, async (req, res) => {
 
     res.status(200).json({ User, token });
   } catch (err) {
-    res.status(400).json({ error: getErrrorMessage(err) });
+    const error = getErrrorMessage(err);
+    res.status(400).json({ message: error });
   }
 });
 

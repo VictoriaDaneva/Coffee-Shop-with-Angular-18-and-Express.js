@@ -20,6 +20,7 @@ const authService = {
   async getProfile(userId) {
     return user.findOne({ _id: userId }, { password: 0, __v: 0 }).lean();
   },
+
   async register(
     imageUrl,
     username,

@@ -87,3 +87,8 @@ footer a:hover {
     gap: 10px;
   }
 }
+.error {
+  color: rgb(164, 90, 90);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
