@@ -11,21 +11,40 @@ import { EditProfileComponent } from './user/edit-profile/edit-profile.component
 import { DetailsComponent } from './products/details/details.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
 import { SearchComponent } from './products/search/search.component';
+import { AuthGuestGuard } from './guard/auth.guard';
+import { AuthUserGuard } from './guard/auth-user.guard';
+import { AuthPostGuard } from './guard/auth-post.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
 
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'profile/edit/:id', component: EditProfileComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthUserGuard] },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [AuthUserGuard],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuestGuard],
+  },
+  {
+    path: 'profile/edit/:id',
+    component: EditProfileComponent,
+    canActivate: [AuthPostGuard],
+  },
 
   { path: 'search', component: SearchComponent },
-  { path: 'create', component: CreateComponent },
+  { path: 'create', component: CreateComponent, canActivate: [AuthGuestGuard] },
   { path: 'coffee', component: CoffeeComponent },
   { path: 'coffee/:id', component: DetailsComponent },
-  { path: 'coffee/:id/edit', component: EditProductComponent },
+  {
+    path: 'coffee/:id/edit',
+    component: EditProductComponent,
+    canActivate: [AuthPostGuard],
+  },
 
   { path: 'about-us', component: AboutUsComponent },
 

@@ -62,7 +62,4 @@ export class ApiService {
   getLastThreePosts() {
     return this.getProducts().pipe(map((posts) => posts.slice(-3)));
   }
-  getLastFivePosts() {
-    return this.getProducts().pipe(map((posts) => posts.slice(-5)));
-  }
 }
