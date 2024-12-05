@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../../types/product';
 import { ApiService } from '../../../api.service';
-import { SlicePipe } from '../../../shared/pipes/slice.pipe';
+import { SlicePipe } from '../../../shared/slice.pipe';
 
 @Component({
   selector: 'app-wishlist',

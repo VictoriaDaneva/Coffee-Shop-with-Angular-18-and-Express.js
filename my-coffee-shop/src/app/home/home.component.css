@@ -186,3 +186,70 @@
   height: auto;
   border-radius: 15px;
 }
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 0 20px;
+    justify-content: center;
+    text-align: center;
+    background-position: center;
+  }
+
+  .hero-heading {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtext {
+    font-size: 1rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .perks-bar {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .perk {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .perk-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image {
+    padding: 10px;
+  }
+
+  .about-text {
+    padding: 10px;
+  }
+
+  .about-text h1 {
+    font-size: 2rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-button {
+    margin-top: 10px;
+  }
+}

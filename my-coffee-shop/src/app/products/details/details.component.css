@@ -131,3 +131,33 @@
 .details-link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .product-details {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-image,
+  .product-info {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .main-image {
+    max-width: 90%;
+  }
+
+  .wishlist-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .recommended-items {
+    padding: 20px 10px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
