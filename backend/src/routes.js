@@ -2,7 +2,7 @@ import { Router } from "express";
 import authController from "./controllers/authController.js";
 import coffeeController from "./controllers/coffeeController.js";
 import profileController from "./controllers/profileController.js";
-import cardController from "./controllers/cardController.js";
+import cardController from "./controllers/cartController.js";
 
 const routes = Router();
 

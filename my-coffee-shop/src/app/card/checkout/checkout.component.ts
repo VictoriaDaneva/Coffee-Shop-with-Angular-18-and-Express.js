@@ -24,7 +24,6 @@ export class CheckoutComponent implements OnInit {
   };
   products: any[] = [];
   subtotal: number = 0;
-  //total: number = 0;
 
   constructor(
     private userService: AuthService,
@@ -78,7 +77,18 @@ export class CheckoutComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/order-confirmation']);
+    const purchaseDetails = {
+      username: this.profileDetails.username,
+      email: this.profileDetails.email,
+      phoneNumber: this.profileDetails.phoneNumber,
+      address: this.profileDetails.address,
+      total: this.total.toFixed(2),
+      products: this.products.map((product) => product._id),
+    };
+
+    this.apiService.createPurchase(purchaseDetails).subscribe(() => {
+      this.router.navigate(['/order-confirmation']);
+    });
   }
   get total(): number {
     return this.products.reduce((sum, product) => {

@@ -1,3 +1,4 @@
+import Order from "../models/order.js";
 import Product from "../models/product.js";
 import user from "../models/user.js";
 
@@ -5,24 +6,27 @@ const coffeeService = {
   search(query) {
     return Product.find({ title: { $regex: query, $options: "i" } });
   },
-  //Card functionality
-  removeCard(productId, userId) {
+  //Cart functionality
+  createOrder(orderData) {
+    return Order.create(orderData);
+  },
+  removeCart(productId, userId) {
     return user.findOneAndUpdate(
       { _id: userId },
-      { $pull: { card: productId } },
+      { $pull: { cart: productId } },
       { runValidators: true, new: true }
     );
   },
 
-  async getCard(userId) {
-    const User = await user.findById(userId).populate("card");
-    return User.card;
+  async getCart(userId) {
+    const User = await user.findById(userId).populate("cart");
+    return User.cart;
   },
 
-  addToCard(productId, userId) {
+  addToCart(productId, userId) {
     return user.findByIdAndUpdate(
       userId,
-      { $push: { card: productId } },
+      { $push: { cart: productId } },
       { new: true, runValidators: true }
     );
   },

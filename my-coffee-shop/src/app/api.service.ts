@@ -10,7 +10,18 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   //Card functionality
-
+  createPurchase(purchaseDetails: {
+    username: string;
+    email: string;
+    phoneNumber: string;
+    address: string;
+    total: string;
+    products: string[];
+  }) {
+    return this.http
+      .post(`/api/card/order`, purchaseDetails)
+      .pipe(catchError((error) => this.getError(error)));
+  }
   getCard() {
     return this.http.get<Product[]>(`/api/card`);
   }

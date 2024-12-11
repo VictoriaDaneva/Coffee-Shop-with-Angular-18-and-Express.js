@@ -49,7 +49,7 @@ const userSchema = new Schema({
       ref: "Product",
     },
   ],
-  card: [
+  cart: [
     {
       type: Types.ObjectId,
       ref: "Product",

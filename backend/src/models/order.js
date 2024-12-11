@@ -34,10 +34,12 @@ const orderSchema = new Schema({
     type: Types.ObjectId,
     ref: "User",
   },
-  products: {
-    type: Types.ObjectId,
-    ref: "Products",
-  },
+  products: [
+    {
+      type: Types.ObjectId,
+      ref: "Products",
+    },
+  ],
 });
 
 const Order = model("Order", orderSchema);
