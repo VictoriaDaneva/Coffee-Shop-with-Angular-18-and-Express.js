@@ -16,6 +16,7 @@ import { AuthUserGuard } from './guard/auth-user.guard';
 import { AuthPostGuard } from './guard/auth-post.guard';
 import { AddToCardComponent } from './card/add-to-card/add-to-card.component';
 import { CheckoutComponent } from './card/checkout/checkout.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -47,6 +48,7 @@ export const routes: Routes = [
     component: EditProfileComponent,
     canActivate: [AuthPostGuard],
   },
+  { path: 'order-confirmation', component: ThankYouComponent },
 
   { path: 'search', component: SearchComponent },
   { path: 'create', component: CreateComponent, canActivate: [AuthGuestGuard] },
