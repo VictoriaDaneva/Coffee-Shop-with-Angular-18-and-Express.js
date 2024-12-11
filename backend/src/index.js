@@ -27,7 +27,12 @@ app.use(express.json()); // To parse JSON payloads
 app.use(express.urlencoded({ extended: false })); // to not have complex data (false)
 app.use(cookieParser());
 app.use(authMiddleware);
-
+app.use((req, res, next) => {
+  if (req.url.endsWith(".css")) {
+    res.setHeader("Content-Type", "text/css");
+  }
+  next();
+});
 app.use(routes);
 
 app.listen(PORT, () =>

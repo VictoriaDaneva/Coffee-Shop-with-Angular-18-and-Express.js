@@ -24,7 +24,7 @@ export class AddToCartComponent implements OnInit {
   remove(id: string) {
     this.apiService
       .removeFromCart(id)
-      .subscribe(() => this.router.navigate([`/coffee`]));
+      .subscribe(() => window.location.reload());
   }
   navigateToCheckout() {
     if (this.products.length > 0) {

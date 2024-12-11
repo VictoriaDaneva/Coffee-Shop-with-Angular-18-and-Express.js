@@ -48,7 +48,11 @@ export const routes: Routes = [
     component: EditProfileComponent,
     canActivate: [AuthPostGuard],
   },
-  { path: 'order-confirmation', component: ThankYouComponent },
+  {
+    path: 'order-confirmation',
+    component: ThankYouComponent,
+    canActivate: [AuthGuestGuard],
+  },
 
   { path: 'search', component: SearchComponent },
   { path: 'create', component: CreateComponent, canActivate: [AuthGuestGuard] },
