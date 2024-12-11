@@ -9,6 +9,23 @@
   font-family: "Roboto", sans-serif;
   overflow: hidden;
 }
+.no-items {
+  font-size: 1.5rem;
+  color: #555;
+  font-weight: bold;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-out;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /* Title Section */
 .cart-title-container {

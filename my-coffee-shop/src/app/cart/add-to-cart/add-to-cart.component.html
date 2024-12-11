@@ -10,7 +10,7 @@
   } @else {
   <div class="cart-items">
     @if (products.length === 0) {
-    <p>no items :(</p>
+    <p class="no-items">no items :(</p>
     } @else { @for (product of products; track $index) {
     <div class="cart-item">
       <div class="cart-item-image">
