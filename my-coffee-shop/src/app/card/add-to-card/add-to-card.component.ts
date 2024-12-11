@@ -26,6 +26,11 @@ export class AddToCardComponent implements OnInit {
       .removeFromCard(id)
       .subscribe(() => this.router.navigate([`/coffee`]));
   }
+  navigateToCheckout() {
+    if (this.products.length > 0) {
+      this.router.navigate(['/card/checkout']);
+    }
+  }
 
   ngOnInit() {
     this.apiService.getCard().subscribe((products) => {

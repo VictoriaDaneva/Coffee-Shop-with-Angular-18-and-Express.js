@@ -1,0 +1,94 @@
+<div class="checkout-wrapper">
+  <!-- Shipping Address Section -->
+  <div class="shipping-container">
+    <h2 class="section-title">Shipping Address</h2>
+    <form class="shipping-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Name"
+        [(ngModel)]="profileDetails.username"
+        #nameInput="ngModel"
+        required
+      />
+      @if (nameInput.invalid && nameInput.touched) {
+      <div class="error">Name is required!</div>
+      }
+
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        [(ngModel)]="profileDetails.email"
+        #emailInput="ngModel"
+        required
+      />
+      @if (emailInput.invalid && emailInput.touched) {
+      <div class="error">Email is required!</div>
+      }
+
+      <input
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber"
+        placeholder="Phone Number"
+        [(ngModel)]="profileDetails.phoneNumber"
+        #phoneNumberInput="ngModel"
+        required
+      />
+      @if (phoneNumberInput.invalid && phoneNumberInput.touched) {
+      <div class="error">Phone number is required!</div>
+      }
+
+      <textarea
+        id="address"
+        name="address"
+        placeholder="Address"
+        rows="3"
+        [(ngModel)]="profileDetails.address"
+        #addressInput="ngModel"
+        required
+      ></textarea>
+      @if (addressInput.invalid && addressInput.touched) {
+      <div class="error">Address is required!</div>
+      } @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+      }
+
+      <button type="submit" class="continue-btn">Continue to Shipping</button>
+    </form>
+  </div>
+
+  <!-- Order Summary Section -->
+  <div class="order-summary-container">
+    <h2 class="section-title">Order Summary</h2>
+    <div class="summary-items">
+      @for (product of products; track $index) {
+      <div class="cart-item">
+        <div class="cart-item-image">
+          <img [src]="product.imageUrl" alt="Product Image" />
+        </div>
+        <div class="cart-item-details">
+          <h3 class="product-name">{{ product.title }}</h3>
+          <p class="product-price">€{{ product.price }}</p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="summary-total">
+      <p>Subtotal</p>
+      <p>€{{ total.toFixed(2) }}</p>
+    </div>
+    <div class="summary-total">
+      <p>Shipping</p>
+      <p>Calculated at next step</p>
+    </div>
+    <div class="summary-total total">
+      <p>Total</p>
+      <p>EUR €{{ total.toFixed(2) }}</p>
+    </div>
+  </div>
+</div>

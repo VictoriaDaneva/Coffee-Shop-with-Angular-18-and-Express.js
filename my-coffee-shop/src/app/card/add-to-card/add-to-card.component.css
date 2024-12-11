@@ -124,3 +124,7 @@
 .checkout-btn:hover {
   background: linear-gradient(90deg, #1e335a, #5864af);
 }
+.checkout-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

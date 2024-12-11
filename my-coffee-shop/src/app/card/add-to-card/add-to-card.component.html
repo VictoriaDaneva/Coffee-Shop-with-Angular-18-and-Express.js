@@ -32,6 +32,12 @@
       Subtotal ({{ products.length }} item{{ products.length > 1 ? "s" : "" }})
       <span>€{{ total.toFixed(2) }}</span>
     </p>
-    <button routerLink="/card/checkout" class="checkout-btn">Checkout</button>
+    <button
+      [disabled]="products.length === 0"
+      (click)="navigateToCheckout()"
+      class="checkout-btn"
+    >
+      Checkout
+    </button>
   </footer>
 </div>
