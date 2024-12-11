@@ -46,7 +46,7 @@ Installation:
 
 1. Clone the repository:
 
-- git clone <https://github.com/VictoriaDaneva/Coffee-Shop-with-Angular-18-and-Express.js>  
+- git clone <https://github.com/VictoriaDaneva/Coffee-Shop-with-Angular-18-and-Express.js](https://github.com/VictoriaDaneva/Coffee-Shop-with-Angular-18-and-Express.js.git>  
 
 - cd coffee-shop
 
