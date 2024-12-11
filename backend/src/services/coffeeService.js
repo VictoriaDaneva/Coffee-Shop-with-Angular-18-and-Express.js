@@ -7,6 +7,14 @@ const coffeeService = {
     return Product.find({ title: { $regex: query, $options: "i" } });
   },
   //Cart functionality
+  clearCart(userId) {
+    return user.findByIdAndUpdate(
+      userId,
+      { $set: { cart: [] } },
+      { new: true, runValidators: true }
+    );
+  },
+
   createOrder(orderData) {
     return Order.create(orderData);
   },

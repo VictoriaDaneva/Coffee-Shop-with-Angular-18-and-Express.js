@@ -4,18 +4,10 @@ const orderSchema = new Schema({
   username: {
     type: String,
     required: [true, "Username is required!"],
-    unique: true,
-    minlength: [5, "Username must be at least 5 characters long!"],
-    match: [
-      /^[a-zA-Z0-9]+$/g,
-      "Username must contain only Latin letters and digits!",
-    ],
   },
   email: {
     type: String,
     required: [true, "Email is required!"],
-    unique: true,
-    match: [/^\S+@\S+\.\S+$/, "Please use a valid email address!"],
   },
   phoneNumber: {
     type: String,

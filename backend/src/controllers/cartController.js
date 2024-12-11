@@ -19,6 +19,7 @@ cartController.post("/order", isAuth, async (req, res) => {
       products,
       owner: userId,
     });
+    await coffeeService.clearCart(userId);
     return res.status(200).json(newOrder);
   } catch (err) {
     console.log(err.message);
