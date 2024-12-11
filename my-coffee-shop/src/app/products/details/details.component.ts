@@ -29,11 +29,11 @@ export class DetailsComponent implements OnInit {
     return this.userService.isLogged;
   }
 
-  addToCard() {
+  addToCart() {
     const id = this.route.snapshot.params['id'];
     this.apiService
-      .addToCard(id)
-      .subscribe(() => this.router.navigate([`/card`]));
+      .addToCart(id)
+      .subscribe(() => this.router.navigate([`/cart`]));
   }
 
   unWishlist() {

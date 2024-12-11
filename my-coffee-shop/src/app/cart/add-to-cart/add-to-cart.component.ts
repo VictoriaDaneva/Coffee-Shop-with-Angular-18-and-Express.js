@@ -5,13 +5,13 @@ import { Product } from '../../types/product';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
-  selector: 'app-add-to-card',
+  selector: 'app-add-to-cart',
   standalone: true,
   imports: [RouterLink, LoaderComponent],
-  templateUrl: './add-to-card.component.html',
-  styleUrl: './add-to-card.component.css',
+  templateUrl: './add-to-cart.component.html',
+  styleUrl: './add-to-cart.component.css',
 })
-export class AddToCardComponent implements OnInit {
+export class AddToCartComponent implements OnInit {
   products: Product[] = [];
   isLoading = true;
 
@@ -23,17 +23,17 @@ export class AddToCardComponent implements OnInit {
 
   remove(id: string) {
     this.apiService
-      .removeFromCard(id)
+      .removeFromCart(id)
       .subscribe(() => this.router.navigate([`/coffee`]));
   }
   navigateToCheckout() {
     if (this.products.length > 0) {
-      this.router.navigate(['/card/checkout']);
+      this.router.navigate(['/cart/checkout']);
     }
   }
 
   ngOnInit() {
-    this.apiService.getCard().subscribe((products) => {
+    this.apiService.getCart().subscribe((products) => {
       this.products = products;
       this.isLoading = false;
     });

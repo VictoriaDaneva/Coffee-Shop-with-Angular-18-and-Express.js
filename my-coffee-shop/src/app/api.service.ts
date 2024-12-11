@@ -9,7 +9,7 @@ import { catchError, map, throwError } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  //Card functionality
+  //Cart functionality
   createPurchase(purchaseDetails: {
     username: string;
     email: string;
@@ -19,18 +19,18 @@ export class ApiService {
     products: string[];
   }) {
     return this.http
-      .post(`/api/card/order`, purchaseDetails)
+      .post(`/api/cart/order`, purchaseDetails)
       .pipe(catchError((error) => this.getError(error)));
   }
-  getCard() {
-    return this.http.get<Product[]>(`/api/card`);
+  getCart() {
+    return this.http.get<Product[]>(`/api/cart`);
   }
 
-  addToCard(id: string) {
-    return this.http.get(`/api/card/add/${id}`);
+  addToCart(id: string) {
+    return this.http.get(`/api/cart/add/${id}`);
   }
-  removeFromCard(id: string) {
-    return this.http.get<Product>(`/api/card/add/${id}/remove`);
+  removeFromCart(id: string) {
+    return this.http.get<Product>(`/api/cart/add/${id}/remove`);
   }
   //CRUD operations for products
 

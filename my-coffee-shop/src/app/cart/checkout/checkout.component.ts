@@ -61,7 +61,7 @@ export class CheckoutComponent implements OnInit {
     });
 
     // Load cart products
-    this.apiService.getCard().subscribe({
+    this.apiService.getCart().subscribe({
       next: (products) => {
         this.products = products;
       },

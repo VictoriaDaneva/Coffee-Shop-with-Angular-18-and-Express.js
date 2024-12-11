@@ -14,8 +14,8 @@
 
       <div class="wishlist-actions">
         @if (isLoggedIn) { @if (!isOwner) {
-        <button (click)="addToCard()" class="wishlist-button">
-          Add to card
+        <button (click)="addToCart()" class="wishlist-button">
+          Add to cart
         </button>
         @if (isLiked) {
         <button (click)="unWishlist()" class="wishlist-button">

@@ -14,8 +14,8 @@ import { SearchComponent } from './products/search/search.component';
 import { AuthGuestGuard } from './guard/auth.guard';
 import { AuthUserGuard } from './guard/auth-user.guard';
 import { AuthPostGuard } from './guard/auth-post.guard';
-import { AddToCardComponent } from './card/add-to-card/add-to-card.component';
-import { CheckoutComponent } from './card/checkout/checkout.component';
+import { AddToCartComponent } from './cart/add-to-cart/add-to-cart.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 
 export const routes: Routes = [
@@ -29,13 +29,13 @@ export const routes: Routes = [
     canActivate: [AuthUserGuard],
   },
   {
-    path: 'card/checkout',
+    path: 'cart/checkout',
     component: CheckoutComponent,
     canActivate: [AuthGuestGuard],
   },
   {
-    path: 'card',
-    component: AddToCardComponent,
+    path: 'cart',
+    component: AddToCartComponent,
     canActivate: [AuthGuestGuard],
   },
   {
