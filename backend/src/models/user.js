@@ -49,6 +49,12 @@ const userSchema = new Schema({
       ref: "Product",
     },
   ],
+  card: [
+    {
+      type: Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
 
 userSchema.pre("save", async function () {

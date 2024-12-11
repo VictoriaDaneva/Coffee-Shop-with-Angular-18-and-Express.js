@@ -5,6 +5,19 @@ const coffeeService = {
   search(query) {
     return Product.find({ title: { $regex: query, $options: "i" } });
   },
+  //Card functionality
+  async getCard(userId) {
+    const User = await user.findById(userId).populate("card");
+    return User.card;
+  },
+
+  addToCard(productId, userId) {
+    return user.findByIdAndUpdate(
+      userId,
+      { $push: { card: productId } },
+      { new: true, runValidators: true }
+    );
+  },
 
   //Wishlist Functionality
   removeWishlistUser(productId, userId) {

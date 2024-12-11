@@ -1,0 +1,31 @@
+<div class="cart-container">
+  <div class="cart-title-container">
+    <h2 class="cart-title">🛒 Your Cart</h2>
+    <button routerLink="/coffee" class="close-btn">&times;</button>
+  </div>
+
+  <!-- Cart Items -->
+  <div class="cart-items">
+    @for (product of products; track $index) {
+    <div class="cart-item">
+      <div class="cart-item-image">
+        <img [src]="product.imageUrl" alt="Product Image" />
+      </div>
+      <div class="cart-item-details">
+        <h3 class="product-name">{{ product.title }}</h3>
+        <p class="product-price">€{{ product.price }}</p>
+      </div>
+      <button class="remove-btn">Remove</button>
+    </div>
+    }
+  </div>
+
+  <!-- Cart Footer -->
+  <footer class="cart-footer">
+    <p class="subtotal">
+      Subtotal ({{ products.length }} item{{ products.length > 1 ? "s" : "" }})
+      <span>€{{ total.toFixed(2) }}</span>
+    </p>
+    <button routerLink="/card/checkout" class="checkout-btn">Checkout</button>
+  </footer>
+</div>

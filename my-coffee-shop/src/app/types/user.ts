@@ -9,6 +9,8 @@ export interface User {
   address: string;
   password: string;
   wishlist: Product[];
+  posts: Product[];
+  card: Product[];
   __v: number;
 }
 

@@ -9,6 +9,16 @@ import { catchError, map, throwError } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
+  //Card functionality
+
+  getCard() {
+    return this.http.get<Product[]>(`/api/card`);
+  }
+
+  addToCard(id: string) {
+    return this.http.get(`/api/card/add/${id}`);
+  }
+
   //CRUD operations for products
 
   getProducts() {

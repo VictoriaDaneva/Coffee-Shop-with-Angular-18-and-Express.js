@@ -29,6 +29,13 @@ export class DetailsComponent implements OnInit {
     return this.userService.isLogged;
   }
 
+  addToCard() {
+    const id = this.route.snapshot.params['id'];
+    this.apiService
+      .addToCard(id)
+      .subscribe(() => this.router.navigate([`/card`]));
+  }
+
   unWishlist() {
     const id = this.route.snapshot.params['id'];
     this.apiService

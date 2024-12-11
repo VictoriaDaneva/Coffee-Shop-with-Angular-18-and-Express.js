@@ -14,6 +14,7 @@ import { SearchComponent } from './products/search/search.component';
 import { AuthGuestGuard } from './guard/auth.guard';
 import { AuthUserGuard } from './guard/auth-user.guard';
 import { AuthPostGuard } from './guard/auth-post.guard';
+import { AddToCardComponent } from './card/add-to-card/add-to-card.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,6 +25,11 @@ export const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate: [AuthUserGuard],
+  },
+  {
+    path: 'card',
+    component: AddToCardComponent,
+    canActivate: [AuthGuestGuard],
   },
   {
     path: 'profile',
