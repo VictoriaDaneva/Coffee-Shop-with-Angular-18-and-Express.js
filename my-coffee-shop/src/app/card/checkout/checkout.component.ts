@@ -78,14 +78,6 @@ export class CheckoutComponent implements OnInit {
       return;
     }
 
-    // Proceed to finalize the order
-    console.log('Order details:', {
-      userDetails: this.profileDetails,
-      products: this.products,
-      total: this.total,
-    });
-
-    // Navigate to a confirmation page or display success message
     this.router.navigate(['/order-confirmation']);
   }
   get total(): number {
