@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { Product } from '../../types/product';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-add-to-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, LoaderComponent],
   templateUrl: './add-to-card.component.html',
   styleUrl: './add-to-card.component.css',
 })
@@ -20,11 +21,10 @@ export class AddToCardComponent implements OnInit {
     private router: Router
   ) {}
 
-  remove() {
-    const id = this.route.snapshot.params['id'];
-    // this.apiService
-    //   .removeFromCard(id)
-    //  .subscribe(() => this.router.navigate([`/coffee`]));
+  remove(id: string) {
+    this.apiService
+      .removeFromCard(id)
+      .subscribe(() => this.router.navigate([`/coffee`]));
   }
 
   ngOnInit() {

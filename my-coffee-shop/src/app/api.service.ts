@@ -18,7 +18,9 @@ export class ApiService {
   addToCard(id: string) {
     return this.http.get(`/api/card/add/${id}`);
   }
-
+  removeFromCard(id: string) {
+    return this.http.get<Product>(`/api/card/add/${id}/remove`);
+  }
   //CRUD operations for products
 
   getProducts() {

@@ -6,6 +6,14 @@ const coffeeService = {
     return Product.find({ title: { $regex: query, $options: "i" } });
   },
   //Card functionality
+  removeCard(productId, userId) {
+    return user.findOneAndUpdate(
+      { _id: userId },
+      { $pull: { card: productId } },
+      { runValidators: true, new: true }
+    );
+  },
+
   async getCard(userId) {
     const User = await user.findById(userId).populate("card");
     return User.card;

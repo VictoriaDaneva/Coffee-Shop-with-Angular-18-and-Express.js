@@ -4,6 +4,19 @@ import { getErrrorMessage } from "../utils/errorUtils.js";
 import { isAuth } from "../middleware/authMiddleware.js";
 
 const cardController = Router();
+//removing teh product from the cart
+cardController.get("/add/:id/remove", isAuth, async (req, res) => {
+  const userId = req.user._id;
+  const productId = req.params.id;
+  try {
+    const user = await coffeeService.removeCard(productId, userId);
+    res.status(200).json(user);
+  } catch (err) {
+    console.log(err.message);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+//geting the product
 cardController.get("/", isAuth, async (req, res) => {
   const userId = req.user._id;
   try {
@@ -14,7 +27,7 @@ cardController.get("/", isAuth, async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
-//Add to card
+//Add to cart
 cardController.get("/add/:id", isAuth, async (req, res) => {
   const productId = req.params.id;
   const userId = req.user._id;

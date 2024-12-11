@@ -5,8 +5,13 @@
   </div>
 
   <!-- Cart Items -->
+  @if (isLoading) {
+  <app-loader></app-loader>
+  } @else {
   <div class="cart-items">
-    @for (product of products; track $index) {
+    @if (products.length === 0) {
+    <p>no items :(</p>
+    } @else { @for (product of products; track $index) {
     <div class="cart-item">
       <div class="cart-item-image">
         <img [src]="product.imageUrl" alt="Product Image" />
@@ -15,10 +20,11 @@
         <h3 class="product-name">{{ product.title }}</h3>
         <p class="product-price">€{{ product.price }}</p>
       </div>
-      <button class="remove-btn">Remove</button>
+      <button (click)="remove(product._id)" class="remove-btn">Remove</button>
     </div>
-    }
+    } }
   </div>
+  }
 
   <!-- Cart Footer -->
   <footer class="cart-footer">
