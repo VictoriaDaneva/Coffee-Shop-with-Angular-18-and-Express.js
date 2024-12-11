@@ -1,6 +1,6 @@
 Overview:
 
-- This project is a web application designed for a e-commerce coffee shop which manages users posts, wishlists, and interactions with the products efficiently. 
+- This project is a web application designed for a e-commerce coffee shop which manages users posts, wishlists, purchases and interactions with the products efficiently. 
 The system is built using modern web technologies and provides a seamless user experience for both users and guests.
 
 
@@ -20,6 +20,8 @@ Technologies Used:
 Features:
 
 - User's Features:
+
+Add to cart, remove from cart, confirm order.
 
 Browse and search products.
 
