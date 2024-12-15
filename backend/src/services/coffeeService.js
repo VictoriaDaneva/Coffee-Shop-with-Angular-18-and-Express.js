@@ -75,12 +75,12 @@ const coffeeService = {
   //CRUD Operations
 
   removeFromUserProduct(userId, productId) {
-    return user.findByIdAndDelete(
+    return user.findByIdAndUpdate(
       userId,
-      { $pull: { products: productId } },
+      { $pull: { products: productId } }, // Pull productId from products array
       {
         runValidators: true,
-        new: true,
+        new: true, // Return the updated document
       }
     );
   },
